@@ -37,8 +37,14 @@ const dibujarInicio = () =>{
        ${devolverListado(bloques)}
         </ul>`;
 
-    divContainer.innerHTML=html;
-    devolverListado(bloques);
+    const testSection = `
+        <hr class="bg-light">
+        <button class=" btn  btn-outline-primary mt-2 p-4">Hacer Tests</button>
+    `;
+
+
+    divContainer.innerHTML=html + testSection ;
+   
 
 }
 
