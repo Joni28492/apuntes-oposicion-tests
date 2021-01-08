@@ -47,11 +47,16 @@ const temasTrafico= [
 const temasCodigoPenal = [
     'tema Codigo Penal',
     'tema 2',
-    'tema 3', 
-    'tema 4',
-    'tema 5', 
-    'tema 6', 
-    'tema 7'];
+    'Delito de homicidio, lesiones, y contra la libertad', 
+    'Torturas, integridad moral e indemnidad sexual, libertad, derecho a la propia imagen y honor',
+    'Delitos contra el patrimonio', 
+    'Delitos contra la salud pública', 
+    'Delitos contra la seguridad vial',
+    'Delitos contra la administración Pública',
+    'Delitos contra la administracion de Justicia',
+    'Policia Local como policia judicial',
+    'Proceso Civil',
+    'Proceso contencioso Administrativo'];
 
 
 const devolverListado= ( arr ) =>{
@@ -68,8 +73,11 @@ const devolverListado= ( arr ) =>{
 }
 
 const dibujarTemas = (temaArr) =>{
+    
     const li = devolverListado(temaArr);
     divContainer.innerHTML=li;
+
+    console.log(divContainer);
 }
 
 
