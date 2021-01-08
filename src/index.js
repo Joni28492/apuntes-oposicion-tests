@@ -1,3 +1,3 @@
-import { init } from "./js/inicio";
+import { init } from "./js/dibujar-bloques";
 
 init();
