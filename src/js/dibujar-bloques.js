@@ -4,11 +4,54 @@ const body=document.body;
 let divContainer=document.querySelector('.container-fluid');
 
 //bloques
-const bloques = ['Constitución', 'Cuerpos y fuerzas de seguridad', 'Tráfico', 'Código Penal']
-const temasConstitucion = ['tema Constitucion 1', 'tema 2', 'tema 3', 'tema 4', 'tema 5', 'tema 6', 'tema 7'];
-const temasCuerposYFuerzasSeguridad = ['tema Cuerpos y fuerzas', 'tema 2', 'tema 3', 'tema 4', 'tema 5', 'tema 6', 'tema 7'];
-const temasTrafico= ['tema Trafico', 'tema 2', 'tema 3', 'tema 4', 'tema 5', 'tema 6', 'tema 7'];
-const temasCodigoPenal = ['tema Codigo Penal', 'tema 2', 'tema 3', 'tema 4', 'tema 5', 'tema 6', 'tema 7'];
+const bloques = [
+    'Constitución',
+    'Cuerpos y fuerzas de seguridad', 
+    'Tráfico', 
+    'Código Penal'
+]
+const temasConstitucion = [
+    'La Constitución Española de 1978 I',
+    'La Constitución Española de 1978 II',
+    'La Constitución Española de 1978 II',
+    'Estatuto de autonomia del Principado de Asturias',
+    'Administración Local',
+    'Derecho Administrativo',
+    'Acto Administrativo',
+    'Procedimiento Administrativo',
+    'Personal al servicio de las corporaciones locales',
+    'Haciendas Loacles',
+    'Historia de Asturias',
+    'Geográfia de Asturias'];
+const temasCuerposYFuerzasSeguridad = [
+    'Ley Organica 2/86 13 Marzo, Cuerpos y Fuerzas de Seguridad I', 
+    'Ley Organica 2/86 13 Marzo, Cuerpos y Fuerzas de Seguridad II',
+    'Ley Organica 2/86 13 Marzo, Cuerpos y Fuerzas de Seguridad III',
+    'Ley Organica 2/86 13 Marzo, Cuerpos y Fuerzas de Seguridad IV',
+    'Ley Organica 4/2015 30 Marzo, Proteción de la seguridad ciudadana',
+    'Protección Civil',
+    'tema 7',
+    'tema 8',
+    'tema 9',
+    'tema 10',
+    'tema 11',
+    'tema 12'];
+const temasTrafico= [
+    'tema Trafico',
+    'tema 2',
+    'tema 3',
+    'tema 4',
+    'tema 5', 
+    'tema 6',
+    'tema 7'];
+const temasCodigoPenal = [
+    'tema Codigo Penal',
+    'tema 2',
+    'tema 3', 
+    'tema 4',
+    'tema 5', 
+    'tema 6', 
+    'tema 7'];
 
 
 const devolverListado= ( arr ) =>{
