@@ -15,7 +15,7 @@ export class FlagInput{
         const html=`
             <div class="flag">
             
-            <p class="text-white">${this.id}. ${this.pregunta}</p>
+            <p class="text-white ">${this.id}. ${this.pregunta}</p>
             <input type="text" placeholder="${this.placeHolderFormat}">
             <button id="btn-${this.id}" class="btn btn-info">Resolver</button>
             </div>

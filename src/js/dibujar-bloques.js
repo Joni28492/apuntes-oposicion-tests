@@ -9,7 +9,8 @@ let header = document.querySelector('header');
 let btnTests, ul, btnHome;
 header.classList='text-center mt-4 p-2 mb-1';
 
-const pruebaFlag= new FlagInput(4, 'hola te estoy haciendo una pregunta?', 'aqui la respuesta', 'escribe aqui');
+const pruebaFlag= new FlagInput(4, '¿en que año se creo la constitucion?', '1978', '19XX');
+
 
 const devolverListado= ( arr ) =>{
 
@@ -72,7 +73,7 @@ const dibujarInicio = () =>{
 
     //Prueba de la clase Flag
     const flagHtml=pruebaFlag.crearInputFlag();
-    console.log(flagHtml);
+    //console.log(flagHtml);//Funciona perfectamente
 
     divContainer.innerHTML=html + flagHtml + testSection ;
    
@@ -84,6 +85,8 @@ const eventos = () =>{
 
     ul =document.querySelector('ul');
     btnTests = document.querySelector('#btn-test');
+    
+
 
     //evento del listado de bloques
     ul.addEventListener('click', (event)=>{
@@ -97,12 +100,12 @@ const eventos = () =>{
         ? dibujarTemas(temasCuerposYFuerzasSeguridad, 'Cuerpos y Fuerzas de seguridad', 'Ley Organica 2/86 13 Marzo'):
         (event.target.textContent == bloques[2]) ? dibujarTemas(temasTrafico, 'Trafico', 'Trafico seguridad vial'):
         (event.target.textContent == bloques[3]) ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'):  null;
-        
-        if(bloque) {
+    
+        if(bloque!==null) {
+            //capturamos el btn Home para volver al inicio
             btnHome=document.querySelector('#btn-home');
-            console.log(btnHome);
+            btnHome.addEventListener('click', init);
         };
-
 
     });
 
@@ -111,9 +114,8 @@ const eventos = () =>{
         console.log('Click en el boton hacer test');
     });
 
-    
-   
-   
+    //prueba eventos flag
+
     
 
 }
