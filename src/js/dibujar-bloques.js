@@ -1,10 +1,15 @@
+import { FlagInput } from './classes/Flag.class';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
+
+
 
 const body = document.body;
 let divContainer = document.querySelector('#container');
 let header = document.querySelector('header');
 let btnTests, ul, btnHome;
 header.classList='text-center mt-4 p-2 mb-1';
+
+const pruebaFlag= new FlagInput(4, 'hola te estoy haciendo una pregunta?', 'aqui la respuesta', 'escribe aqui');
 
 const devolverListado= ( arr ) =>{
 
@@ -65,7 +70,11 @@ const dibujarInicio = () =>{
     `;
 
 
-    divContainer.innerHTML=html + testSection ;
+    //Prueba de la clase Flag
+    const flagHtml=pruebaFlag.crearInputFlag();
+    console.log(flagHtml);
+
+    divContainer.innerHTML=html + flagHtml + testSection ;
    
 
 }
@@ -118,6 +127,8 @@ const limpiarElemento = (elem) =>{
 const init = () =>{
     dibujarInicio();
     eventos();
+
+   
 }
 
 export {

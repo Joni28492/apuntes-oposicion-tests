@@ -1,12 +1,12 @@
 
-class FlagInput{
+export class FlagInput{
 
     constructor(id, pregunta, respuesta, placeHolderFormat) {
 
         this.id                = id;
         this.pregunta          = pregunta;
         this.respuesta         = respuesta;
-        this.placeHolderFormat = placeHolderFormat
+        this.placeHolderFormat = placeHolderFormat;
     }
 
 
@@ -15,25 +15,36 @@ class FlagInput{
         const html=`
             <div class="flag">
             
-            ${this.id}. ${this.pregunta}
+            <p class="text-white">${this.id}. ${this.pregunta}</p>
             <input type="text" placeholder="${this.placeHolderFormat}">
-            <button class="btn btn-info">Resolver</button>
+            <button id="btn-${this.id}" class="btn btn-info">Resolver</button>
             </div>
         `;
 
-
+        return html;
     }
     submitFlag(){}
-    comprobarFlag(respuesta, solucion){
+    comprobarFlag(input){
 
-        if (respuesta === solucion) {
+        if (input === this.respuesta) {
             return true;
         } else {
             return false;
         }
 
     }
-    dibujarResultado(){}
+    dibujarResultado(input){
+        const btn =document.querySelector(`#${this.id}`);
+        
+        if (comprobarFlag(input)) {
+            
+            btn.classList="btn btn-success";
+            btn.innerText = 'Correcto';
+        } else {
+            btn.classList="btn btn-danger";
+            btn.innerText = 'Fallaste';
+        }
+    }
 
 
 }
