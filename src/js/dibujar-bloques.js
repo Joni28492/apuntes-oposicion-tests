@@ -10,9 +10,9 @@ let btnTests, ul, btnHome;
 header.classList='text-center mt-4 p-2 mb-1';
 
 const pruebaFlag1= new FlagInput(1, '¿en que año se creo la constitucion?', '1978', '19XX');
-const pruebaFlag2= new FlagInput(2, '¿en que año naci?', '1992', '19XX');
-const pruebaFlag3= new FlagInput(3, '¿donde vivo?', 'Avilés', 'Avilés');
-const pruebaFlag4= new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 marzo', 'X/XX mes');
+const pruebaFlag2= new FlagInput(2, '¿cuantos temas tiene el temario?', '54', 'XX');
+const pruebaFlag3= new FlagInput(3, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes ');
+const pruebaFlag4= new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes');
 let flagList;
 
 const devolverListado= ( arr ) =>{

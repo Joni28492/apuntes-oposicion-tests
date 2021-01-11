@@ -19,8 +19,8 @@ export class FlagInput{
             <div class="flag">
             
             <label class="text-white p-3">${this.id}. ${this.pregunta}</label>
-            <input type="text" placeholder="${this.placeHolderFormat}">
-            <button id="btn-${this.id}" class=" btn btn-info">Resolver</button>
+            <input class="form-control-plaintext text-center " type="text" placeholder="${this.placeHolderFormat}">
+            <button type="submit" id="btn-${this.id}" class="m-2 btn btn-info">Resolver</button>
             </div>
         `;
 
