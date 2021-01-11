@@ -9,8 +9,11 @@ let header = document.querySelector('header');
 let btnTests, ul, btnHome;
 header.classList='text-center mt-4 p-2 mb-1';
 
-const pruebaFlag= new FlagInput(4, '¿en que año se creo la constitucion?', '1978', '19XX');
-
+const pruebaFlag1= new FlagInput(1, '¿en que año se creo la constitucion?', '1978', '19XX');
+const pruebaFlag2= new FlagInput(2, '¿en que año naci?', '1992', '19XX');
+const pruebaFlag3= new FlagInput(3, '¿donde vivo?', 'Avilés', 'Avilés');
+const pruebaFlag4= new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 marzo', 'X/XX mes');
+let flagList;
 
 const devolverListado= ( arr ) =>{
 
@@ -72,10 +75,14 @@ const dibujarInicio = () =>{
 
 
     //Prueba de la clase Flag
-    const flagHtml=pruebaFlag.crearInputFlag();
+    const flagHtml1=pruebaFlag1.crearInputFlag();
+    const flagHtml2=pruebaFlag2.crearInputFlag();
+    const flagHtml3=pruebaFlag3.crearInputFlag();
+    const flagHtml4=pruebaFlag4.crearInputFlag();
+    const flagList=flagHtml1 + flagHtml2 + flagHtml3+flagHtml4;
     //console.log(flagHtml);//Funciona perfectamente
 
-    divContainer.innerHTML=html + flagHtml + testSection ;
+    divContainer.innerHTML=html + flagList + testSection ;
    
 
 }
@@ -115,8 +122,9 @@ const eventos = () =>{
     });
 
     //prueba eventos flag
+    flagList=document.querySelectorAll('.flag');
+    console.log(flagList);
 
-    
 
 }
 

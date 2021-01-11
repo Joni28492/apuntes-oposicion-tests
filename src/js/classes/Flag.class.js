@@ -1,6 +1,9 @@
 
 export class FlagInput{
 
+
+    //comprobar que no se repitan los Id
+
     constructor(id, pregunta, respuesta, placeHolderFormat) {
 
         this.id                = id;
@@ -15,9 +18,9 @@ export class FlagInput{
         const html=`
             <div class="flag">
             
-            <p class="text-white ">${this.id}. ${this.pregunta}</p>
+            <label class="text-white p-3">${this.id}. ${this.pregunta}</label>
             <input type="text" placeholder="${this.placeHolderFormat}">
-            <button id="btn-${this.id}" class="btn btn-info">Resolver</button>
+            <button id="btn-${this.id}" class=" btn btn-info">Resolver</button>
             </div>
         `;
 
