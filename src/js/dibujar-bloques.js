@@ -15,6 +15,9 @@ const pruebaFlag3= new FlagInput(3, '¿cuando se fundo la Ley Organica Proteció
 const pruebaFlag4= new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes');
 let flagList;
 
+
+//Esta funcion captura un array con los temarios y devulve 
+//una cadena de li con esos valores
 const devolverListado= ( arr ) =>{
 
     let cadenaListado='';
@@ -28,16 +31,16 @@ const devolverListado= ( arr ) =>{
     return cadenaListado;
 }
 
+//inyecta en el html los temas que le pasemos con un array 
+//utilizando la funcion devolverListado() en funcion del tema
+//tenemos titulo y subtitulo como parametro vacios por defecto
 const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     
 
     header.innerText='';
     
-   
-    
     header.innerHTML=`<h1 class="text-white">${titulo}</h1>
                       <h4 class="text-white p-2">${subtitulo}</h4>`;
-    
     
     const li = devolverListado(temaArr);
     const btnHome = document.createElement('button');
@@ -50,12 +53,12 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     
     divContainer.append(btnHome);
 
-    //console.log(divContainer);
+    
 }
 
 
 
-
+//dibujamos los bloques de los temas 
 const dibujarInicio = () =>{
 
     header.innerHTML=`<h1 class="text-white">Oposiciones Policia Local</h1>
@@ -74,15 +77,15 @@ const dibujarInicio = () =>{
     `;
 
 
-    //Prueba de la clase Flag
+    //inicializamos diferentes Flags, posible refactorizacion
     const flagHtml1=pruebaFlag1.crearInputFlag();
     const flagHtml2=pruebaFlag2.crearInputFlag();
     const flagHtml3=pruebaFlag3.crearInputFlag();
     const flagHtml4=pruebaFlag4.crearInputFlag();
-    const flagList=flagHtml1 + flagHtml2 + flagHtml3+flagHtml4;
+    const flagListAdd=flagHtml1 + flagHtml2 + flagHtml3+flagHtml4;
     //console.log(flagHtml);//Funciona perfectamente
 
-    divContainer.innerHTML=html + flagList + testSection ;
+    divContainer.innerHTML=html + flagListAdd + testSection ;
    
 
 }
@@ -101,12 +104,14 @@ const eventos = () =>{
         limpiarElemento(event.target.parentNode);
 
         let bloque=
-        (event.target.textContent == bloques[0]) 
-        ? dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978'):
-        (event.target.textContent == bloques[1]) 
-        ? dibujarTemas(temasCuerposYFuerzasSeguridad, 'Cuerpos y Fuerzas de seguridad', 'Ley Organica 2/86 13 Marzo'):
-        (event.target.textContent == bloques[2]) ? dibujarTemas(temasTrafico, 'Trafico', 'Trafico seguridad vial'):
-        (event.target.textContent == bloques[3]) ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'):  null;
+            (event.target.textContent == bloques[0]) 
+            ? dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978'):
+            (event.target.textContent == bloques[1]) 
+            ? dibujarTemas(temasCuerposYFuerzasSeguridad, 'Cuerpos y Fuerzas de seguridad', 'Ley Organica 2/86 13 Marzo'):
+            (event.target.textContent == bloques[2]) 
+            ? dibujarTemas(temasTrafico, 'Trafico', 'Trafico seguridad vial'):
+            (event.target.textContent == bloques[3]) 
+            ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'):  null;
     
         if(bloque!==null) {
             //capturamos el btn Home para volver al inicio
@@ -123,7 +128,22 @@ const eventos = () =>{
 
     //prueba eventos flag
     flagList=document.querySelectorAll('.flag');
-    console.log(flagList);
+   // console.log(flagList[0].children[2]);
+
+   //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
+   //flagList.forEach(element => console.log(element.children[2]));
+
+
+    //eventos flags
+    flagList.forEach( element => {
+
+        element.children[2].addEventListener('click', (event)=>{
+            console.log(`boton de flag, el id del boton es ${element.children[2].id}`);
+            //estamos capturando html, y llegamos al id del btn
+            //implementar metodo para comprobar la respuesta
+        });
+        
+    });
 
 
 }
@@ -138,7 +158,6 @@ const init = () =>{
     dibujarInicio();
     eventos();
 
-   
 }
 
 export {

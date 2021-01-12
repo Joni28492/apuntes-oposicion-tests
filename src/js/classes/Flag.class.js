@@ -2,7 +2,7 @@
 export class FlagInput{
 
 
-    //comprobar que no se repitan los Id
+    //comprobar que no se repitan los Id, aplicar Singleton
 
     constructor(id, pregunta, respuesta, placeHolderFormat) {
 
@@ -19,7 +19,7 @@ export class FlagInput{
             <div class="flag">
             
             <label class="text-white p-3">${this.id}. ${this.pregunta}</label>
-            <input class="form-control-plaintext text-center " type="text" placeholder="${this.placeHolderFormat}">
+            <input class="form-control-plaintext text-center text-white" type="text" placeholder="${this.placeHolderFormat}">
             <button type="submit" id="btn-${this.id}" class="m-2 btn btn-info">Resolver</button>
             </div>
         `;
@@ -27,27 +27,13 @@ export class FlagInput{
         return html;
     }
     submitFlag(){}
-    comprobarFlag(input){
+    
+    //devuelve true o false en funcion de la respuesta del usuario
+    //que es el input.value, expresion ternaria
+    comprobarFlag(respuestaUsuario){ return respuestaUsuario == this.respuesta && true ; }
 
-        if (input === this.respuesta) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-    dibujarResultado(input){
-        const btn =document.querySelector(`#${this.id}`);
-        
-        if (comprobarFlag(input)) {
-            
-            btn.classList="btn btn-success";
-            btn.innerText = 'Correcto';
-        } else {
-            btn.classList="btn btn-danger";
-            btn.innerText = 'Fallaste';
-        }
-    }
+    
+    dibujarResultado(){}
 
 
 }
