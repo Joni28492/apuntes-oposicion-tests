@@ -1,4 +1,4 @@
-import { FlagInput } from './classes/Flag.class';
+import { FlagInput, respuestasArr } from './classes/Flag.class';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
 
@@ -9,12 +9,19 @@ let header = document.querySelector('header');
 let btnTests, ul, btnHome;
 header.classList='text-center mt-4 p-2 mb-1';
 
-const pruebaFlag1= new FlagInput(1, '¿en que año se creo la constitucion?', '1978', '19XX');
-const pruebaFlag2= new FlagInput(2, '¿cuantos temas tiene el temario?', '54', 'XX');
-const pruebaFlag3= new FlagInput(3, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes ');
-const pruebaFlag4= new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes');
+const pruebaFlag1= new FlagInput(0, '¿en que año se creo la constitucion?', '1978', '19XX');
+const pruebaFlag2= new FlagInput(1, '¿cuantos temas tiene el temario?', '54', 'XX');
+const pruebaFlag3= new FlagInput(2, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes ');
+const pruebaFlag4= new FlagInput(3, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes');
 let flagList;
 
+/*
+flagBD={
+    0:new FlagInput(1, '¿en que año se creo la constitucion?', '1978', '19XX'),
+    1:new FlagInput(2, '¿cuantos temas tiene el temario?', '54', 'XX'),
+    2:new FlagInput(3, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes '),
+    3:new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes')
+}*/
 
 //Esta funcion captura un array con los temarios y devulve 
 //una cadena de li con esos valores
@@ -77,12 +84,16 @@ const dibujarInicio = () =>{
     `;
 
 
-    //inicializamos diferentes Flags, posible refactorizacion
+    //inicializamos diferentes Flags, 
+    //posible refactorizacion, utilizando objetos literales para asignarle 
+    //el id del valor 
+  
     const flagHtml1=pruebaFlag1.crearInputFlag();
     const flagHtml2=pruebaFlag2.crearInputFlag();
     const flagHtml3=pruebaFlag3.crearInputFlag();
     const flagHtml4=pruebaFlag4.crearInputFlag();
     const flagListAdd=flagHtml1 + flagHtml2 + flagHtml3+flagHtml4;
+    
     //console.log(flagHtml);//Funciona perfectamente
 
     divContainer.innerHTML=html + flagListAdd + testSection ;
@@ -135,10 +146,24 @@ const eventos = () =>{
 
 
     //eventos flags
+    
     flagList.forEach( element => {
 
+        let i=0;
         element.children[2].addEventListener('click', (event)=>{
             console.log(`boton de flag, el id del boton es ${element.children[2].id}`);
+            const   input    =element.children[1].value,
+                    respuesta=respuestasArr[i];
+            
+           
+
+           if (input === respuesta) {
+               console.warn("correcta");
+           }else{
+               console.warn("incorrecta");
+           }
+
+           i++;
             //estamos capturando html, y llegamos al id del btn
             //implementar metodo para comprobar la respuesta
         });

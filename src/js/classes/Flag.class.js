@@ -1,8 +1,12 @@
 
+export let respuestasArr=[];
+
 export class FlagInput{
 
+    
+   
 
-    //comprobar que no se repitan los Id, aplicar Singleton
+    //posibilidad de  aplicar Singleton
 
     constructor(id, pregunta, respuesta, placeHolderFormat) {
 
@@ -10,6 +14,7 @@ export class FlagInput{
         this.pregunta          = pregunta;
         this.respuesta         = respuesta;
         this.placeHolderFormat = placeHolderFormat;
+        
     }
 
 
@@ -23,6 +28,11 @@ export class FlagInput{
             <button type="submit" id="btn-${this.id}" class="m-2 btn btn-info">Resolver</button>
             </div>
         `;
+
+        respuestasArr.push(this.respuesta);
+       
+
+        
 
         return html;
     }
