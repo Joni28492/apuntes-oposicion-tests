@@ -3,7 +3,7 @@ import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico,
 
 
 
-const body = document.body;
+
 let divContainer = document.querySelector('#container');
 let header = document.querySelector('header');
 let btnTests, ul, btnHome;
@@ -15,13 +15,7 @@ const pruebaFlag3= new FlagInput(2, '¿cuando se fundo la Ley Organica Proteció
 const pruebaFlag4= new FlagInput(3, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes');
 let flagList;
 
-/*
-flagBD={
-    0:new FlagInput(1, '¿en que año se creo la constitucion?', '1978', '19XX'),
-    1:new FlagInput(2, '¿cuantos temas tiene el temario?', '54', 'XX'),
-    2:new FlagInput(3, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes '),
-    3:new FlagInput(4, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes')
-}*/
+
 
 //Esta funcion captura un array con los temarios y devulve 
 //una cadena de li con esos valores
@@ -109,7 +103,7 @@ const eventos = () =>{
     
 
 
-    //evento del listado de bloques
+    //EVENTO del listado de bloques
     ul.addEventListener('click', (event)=>{
         
         limpiarElemento(event.target.parentNode);
@@ -132,30 +126,26 @@ const eventos = () =>{
 
     });
 
-    //evento del btn-test para los test
+    //EVENTO del btn-test para los test
     btnTests.addEventListener('click', ()=>{
         console.log('Click en el boton hacer test');
     });
 
-    //prueba eventos flag
+    // selector flags
     flagList=document.querySelectorAll('.flag');
-   // console.log(flagList[0].children[2]);
-
-   //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
-   //flagList.forEach(element => console.log(element.children[2]));
-
-
+   
     //eventos flags
-    
+    //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
     flagList.forEach( (element, index) => {
 
-        
-        //console.log(index);
+
         element.children[2].addEventListener('click', (event)=>{
             //console.log(`boton de flag, el id del boton es ${element.children[2].id}`);
             const   input    =element.children[1].value,
                     respuesta=respuestasArr[index],
-                    btn      = element.children[2];
+                    btn      = element.children[2],
+                    parent   = btn.parentNode,
+                    divAlert =document.createElement('div');
             
            if (!input) {
             
@@ -172,6 +162,14 @@ const eventos = () =>{
                     btn.classList="m-2 btn btn-success";
                     btn.textContent="Correcta";
                     btn.disabled=true;
+
+                    parent.removeChild(element.children[1]);
+
+                    divAlert.textContent=respuesta;
+                    divAlert.classList="alert alert-success";
+                    
+                    parent.insertBefore(divAlert, btn );
+
                     console.warn("correcta");
                 }else{
                     btn.classList="m-2 btn btn-danger";
@@ -186,10 +184,6 @@ const eventos = () =>{
            }
 
           
-           
-           
-            //estamos capturando html, y llegamos al id del btn
-            //implementar metodo para comprobar la respuesta
         });
         
     });
