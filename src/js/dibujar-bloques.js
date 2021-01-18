@@ -147,23 +147,47 @@ const eventos = () =>{
 
     //eventos flags
     
-    flagList.forEach( element => {
+    flagList.forEach( (element, index) => {
 
-        let i=0;
+        
+        //console.log(index);
         element.children[2].addEventListener('click', (event)=>{
-            console.log(`boton de flag, el id del boton es ${element.children[2].id}`);
+            //console.log(`boton de flag, el id del boton es ${element.children[2].id}`);
             const   input    =element.children[1].value,
-                    respuesta=respuestasArr[i];
+                    respuesta=respuestasArr[index],
+                    btn      = element.children[2];
             
-           
+           if (!input) {
+            
+                btn.classList="m-2 btn btn-warning";
+                btn.textContent="Esta vacio introduce texto";
 
-           if (input === respuesta) {
-               console.warn("correcta");
+                setTimeout(() => {
+                    btn.classList="m-2 btn btn-info";
+                    btn.textContent="Resolver";
+                }, 2000);
+
            }else{
-               console.warn("incorrecta");
+                if (input === respuesta) {
+                    btn.classList="m-2 btn btn-success";
+                    btn.textContent="Correcta";
+                    btn.disabled=true;
+                    console.warn("correcta");
+                }else{
+                    btn.classList="m-2 btn btn-danger";
+                    btn.textContent="Incorrecta";
+                    console.warn("incorrecta");
+
+                    setTimeout(() => {
+                        btn.classList="m-2 btn btn-info";
+                        btn.textContent="Resolver";
+                    }, 2000);
+                }
            }
 
-           i++;
+          
+           
+           
             //estamos capturando html, y llegamos al id del btn
             //implementar metodo para comprobar la respuesta
         });
