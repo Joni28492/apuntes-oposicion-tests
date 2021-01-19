@@ -3,8 +3,6 @@ export let respuestasArr=[];
 
 export class FlagInput{
 
-    
-   
 
     //posibilidad de  aplicar Singleton
 
@@ -36,14 +34,16 @@ export class FlagInput{
 
         return html;
     }
-    submitFlag(){}
+   
     
     //devuelve true o false en funcion de la respuesta del usuario
     //que es el input.value, expresion ternaria
     comprobarFlag(respuestaUsuario){ return respuestaUsuario == this.respuesta && true ; }
 
     
-    dibujarResultado(){}
+   static limpiarRespuestas(){
+    respuestasArr.forEach(element => respuestasArr.pop( element ));
+   }
 
 
 }

@@ -1,16 +1,15 @@
 import {  respuestasArr } from './classes/Flag.class';
-import { pruebaFlag1, pruebaFlag10, pruebaFlag11, pruebaFlag2, pruebaFlag3, pruebaFlag4, pruebaFlag5, pruebaFlag6, pruebaFlag7, pruebaFlag8, pruebaFlag9, pruebaFlagDatabase } from './db/flags.db';
+import { arrHtmlFlag, flagHtmlFull } from './db/flags.db';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
 
 
-
+//DOM
 let divContainer = document.querySelector('#container');
 let header = document.querySelector('header');
+    header.classList='text-center mt-4 p-2 mb-1';
 let btnTests, ul, btnHome;
-header.classList='text-center mt-4 p-2 mb-1';
-
-let flagList;
+let flagListDOM;
 
 
 
@@ -34,7 +33,9 @@ const devolverListado= ( arr ) =>{
 //tenemos titulo y subtitulo como parametro vacios por defecto
 const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     
-
+    respuestasArr.forEach(element => respuestasArr.pop( element ));
+    //No las esta popeando todas
+   console.warn(respuestasArr);
     header.innerText='';
     
     header.innerHTML=`<h1 class="text-white">${titulo}</h1>
@@ -59,6 +60,7 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
 //dibujamos los bloques de los temas 
 const dibujarInicio = () =>{
 
+    
     header.innerHTML=`<h1 class="text-white">Oposiciones Policia Local</h1>
                       <h4 class="text-white p-2">Elige Bloque para estudiar</h4>`;
     
@@ -75,29 +77,12 @@ const dibujarInicio = () =>{
     `;
 
 
-    //inicializamos diferentes Flags, 
-    //posible refactorizacion, utilizando objetos literales para asignarle 
-    //el id del valor 
-  
-    const flagHtml1=pruebaFlag1.crearInputFlag(),
-          flagHtml2=pruebaFlag2.crearInputFlag(),
-          flagHtml3=pruebaFlag3.crearInputFlag(),
-          flagHtml4=pruebaFlag4.crearInputFlag(),
-          flagHtml5=pruebaFlag5.crearInputFlag(),
-          flagHtml6=pruebaFlag6.crearInputFlag(),
-          flagHtml7=pruebaFlag7.crearInputFlag(),
-          flagHtml8=pruebaFlag8.crearInputFlag(),
-          flagHtml9=pruebaFlag9.crearInputFlag(),
-          flagHtml10=pruebaFlag10.crearInputFlag(),
-          flagHtml11=pruebaFlag11.crearInputFlag(),
-          flagHtml12=pruebaFlagDatabase.crearInputFlag();
-    
-    const flagListAdd=flagHtml1 + flagHtml2 + flagHtml3 + flagHtml4 + flagHtml5 + flagHtml6 + flagHtml7 + flagHtml8 +
-                      flagHtml9 + flagHtml10 + flagHtml11 + flagHtml12;
-    
-    //console.log(flagHtml);//Funciona perfectamente
+    //limpiamos el array de respuestas para evitar duplicidades
+    respuestasArr.forEach(element => respuestasArr.pop( element ));
+    //dibujamos diferentes Flags
+    const flagListAddHTML=flagHtmlFull(arrHtmlFlag);
 
-    divContainer.innerHTML=html + flagListAdd  + testSection ;
+    divContainer.innerHTML=html + flagListAddHTML  + testSection ;
    
 
 }
@@ -141,6 +126,7 @@ const eventos = () =>{
     //EVENTO del btn-test para los test
     btnTests.addEventListener('click', ()=>{
         console.log('Click en el boton hacer test');
+        //pendiente implementar test y su funcionamiento
     });
 
     /**************************/ 
@@ -150,11 +136,11 @@ const eventos = () =>{
 
 
     // selector flags
-    flagList=document.querySelectorAll('.flag');
+    flagListDOM=document.querySelectorAll('.flag');
    
     //eventos flags
     //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
-    flagList.forEach( (element, index) => {
+    flagListDOM.forEach( (element, index) => {
 
 
         element.children[2].addEventListener('click', (event)=>{
@@ -188,11 +174,11 @@ const eventos = () =>{
                     
                     parent.insertBefore(divAlert, btn );
 
-                    console.warn("correcta");
+                   
                 }else{
                     btn.classList="m-2 btn btn-danger";
                     btn.textContent="Incorrecta";
-                    console.warn("incorrecta");
+                    
 
                     setTimeout(() => {
                         btn.classList="m-2 btn btn-info";
@@ -216,9 +202,10 @@ const limpiarElemento = (elem) =>{
 
 
 const init = () =>{
+    
     dibujarInicio();
     eventos();
-
+    console.log(respuestasArr);
 }
 
 export {
