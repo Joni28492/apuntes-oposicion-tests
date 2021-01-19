@@ -1,4 +1,5 @@
-import { FlagInput, respuestasArr } from './classes/Flag.class';
+import {  respuestasArr } from './classes/Flag.class';
+import { pruebaFlag1, pruebaFlag10, pruebaFlag11, pruebaFlag2, pruebaFlag3, pruebaFlag4, pruebaFlag5, pruebaFlag6, pruebaFlag7, pruebaFlag8, pruebaFlag9, pruebaFlagDatabase } from './db/flags.db';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
 
@@ -9,10 +10,6 @@ let header = document.querySelector('header');
 let btnTests, ul, btnHome;
 header.classList='text-center mt-4 p-2 mb-1';
 
-const pruebaFlag1= new FlagInput(0, '¿en que año se creo la constitucion?', '1978', '19XX');
-const pruebaFlag2= new FlagInput(1, '¿cuantos temas tiene el temario?', '54', 'XX');
-const pruebaFlag3= new FlagInput(2, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes ');
-const pruebaFlag4= new FlagInput(3, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes');
 let flagList;
 
 
@@ -82,15 +79,25 @@ const dibujarInicio = () =>{
     //posible refactorizacion, utilizando objetos literales para asignarle 
     //el id del valor 
   
-    const flagHtml1=pruebaFlag1.crearInputFlag();
-    const flagHtml2=pruebaFlag2.crearInputFlag();
-    const flagHtml3=pruebaFlag3.crearInputFlag();
-    const flagHtml4=pruebaFlag4.crearInputFlag();
-    const flagListAdd=flagHtml1 + flagHtml2 + flagHtml3+flagHtml4;
+    const flagHtml1=pruebaFlag1.crearInputFlag(),
+          flagHtml2=pruebaFlag2.crearInputFlag(),
+          flagHtml3=pruebaFlag3.crearInputFlag(),
+          flagHtml4=pruebaFlag4.crearInputFlag(),
+          flagHtml5=pruebaFlag5.crearInputFlag(),
+          flagHtml6=pruebaFlag6.crearInputFlag(),
+          flagHtml7=pruebaFlag7.crearInputFlag(),
+          flagHtml8=pruebaFlag8.crearInputFlag(),
+          flagHtml9=pruebaFlag9.crearInputFlag(),
+          flagHtml10=pruebaFlag10.crearInputFlag(),
+          flagHtml11=pruebaFlag11.crearInputFlag(),
+          flagHtml12=pruebaFlagDatabase.crearInputFlag();
+    
+    const flagListAdd=flagHtml1 + flagHtml2 + flagHtml3 + flagHtml4 + flagHtml5 + flagHtml6 + flagHtml7 + flagHtml8 +
+                      flagHtml9 + flagHtml10 + flagHtml11 + flagHtml12;
     
     //console.log(flagHtml);//Funciona perfectamente
 
-    divContainer.innerHTML=html + flagListAdd + testSection ;
+    divContainer.innerHTML=html + flagListAdd  + testSection ;
    
 
 }
@@ -103,7 +110,7 @@ const eventos = () =>{
     
 
 
-    //EVENTO del listado de bloques
+    //EVENTO del listado de bloques(PAGINA INICIAL)
     ul.addEventListener('click', (event)=>{
         
         limpiarElemento(event.target.parentNode);
@@ -126,10 +133,21 @@ const eventos = () =>{
 
     });
 
+    /**************************/ 
+    /**************************/ 
+    /**************************/ 
+    /**************************/ 
+
     //EVENTO del btn-test para los test
     btnTests.addEventListener('click', ()=>{
         console.log('Click en el boton hacer test');
     });
+
+    /**************************/ 
+    /**************************/ 
+    /**************************/ 
+    /**************************/ 
+
 
     // selector flags
     flagList=document.querySelectorAll('.flag');
@@ -181,12 +199,12 @@ const eventos = () =>{
                         btn.textContent="Resolver";
                     }, 2000);
                 }
-           }
+           }//cierre ifelse padre
 
           
-        });
+        });//fin de los input de las flags
         
-    });
+    });//fin de foreach FlagList
 
 
 }
