@@ -32,10 +32,13 @@ const devolverListado= ( arr ) =>{
 //utilizando la funcion devolverListado() en funcion del tema
 //tenemos titulo y subtitulo como parametro vacios por defecto
 const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
-    
-    respuestasArr.forEach(element => respuestasArr.pop( element ));
-    //No las esta popeando todas
-   console.warn(respuestasArr);
+
+    //hacemos que el lenght del array sea 0,
+    //no nos permite igualarlo a []
+    //es mas eficiente que hacer un foreach con pop()
+    respuestasArr.length=0;
+    //console.warn(respuestasArr);
+  
     header.innerText='';
     
     header.innerHTML=`<h1 class="text-white">${titulo}</h1>
@@ -47,11 +50,12 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     btnHome.id='btn-home';
 
     btnHome.innerText='Página Principal';
-    divContainer.innerHTML=li;
+    divContainer.innerHTML= `<ul id="temario">${li}</ul>`;
 
     
     divContainer.append(btnHome);
 
+   
     
 }
 
@@ -67,7 +71,7 @@ const dibujarInicio = () =>{
 
     const html=`
         ${header}
-        <ul class="">
+        <ul>
         ${devolverListado(bloques)}
         </ul>`;
 
@@ -77,8 +81,7 @@ const dibujarInicio = () =>{
     `;
 
 
-    //limpiamos el array de respuestas para evitar duplicidades
-    respuestasArr.forEach(element => respuestasArr.pop( element ));
+   
     //dibujamos diferentes Flags
     const flagListAddHTML=flagHtmlFull(arrHtmlFlag);
 
@@ -86,14 +89,22 @@ const dibujarInicio = () =>{
    
 
 }
-
-
+/*
+//resetear evento
+const resetEvent = (event) =>{
+    ul.textContent=`Form reset! Time stamp: ${event.timeStamp}`;
+}
+/*
+//reset ul
+ul.addEventListener('reset', resetEvent );
+*/
 const eventos = () =>{
 
     ul =document.querySelector('ul');
     btnTests = document.querySelector('#btn-test');
     
 
+    
 
     //EVENTO del listado de bloques(PAGINA INICIAL)
     ul.addEventListener('click', (event)=>{
@@ -108,16 +119,27 @@ const eventos = () =>{
             (event.target.textContent == bloques[2]) 
             ? dibujarTemas(temasTrafico, 'Trafico', 'Trafico seguridad vial'):
             (event.target.textContent == bloques[3]) 
-            ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'):  null;
+            ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'): null;
     
+        console.log('Click!!!');
+
         if(bloque!==null) {
+            
             //capturamos el btn Home para volver al inicio
             btnHome=document.querySelector('#btn-home');
             btnHome.addEventListener('click', init);
+
+            
+
+            
         };
 
     });
 
+/*
+    ulTemas=document.querySelector('ol');
+    ulTemas.addEventListener('click', console.log('Click en los temarios') );
+*/
     /**************************/ 
     /**************************/ 
     /**************************/ 

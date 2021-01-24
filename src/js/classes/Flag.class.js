@@ -21,13 +21,13 @@ export class FlagInput{
         const html=`
             <div class="flag">
             
-            <label class="text-white p-3">${this.id}. ${this.pregunta}</label>
+            <label class="text-white p-3"> ${this.pregunta}</label>
             <input class="form-control-plaintext text-center text-white" type="text" placeholder="${this.placeHolderFormat}">
             <button type="submit" id="btn-${this.id}" class="m-2 btn btn-info">Resolver</button>
             </div>
         `;
 
-        respuestasArr.push(this.respuesta);
+        //respuestasArr.push(this.respuesta);
        
 
         
@@ -41,9 +41,7 @@ export class FlagInput{
     comprobarFlag(respuestaUsuario){ return respuestaUsuario == this.respuesta && true ; }
 
     
-   static limpiarRespuestas(){
-    respuestasArr.forEach(element => respuestasArr.pop( element ));
-   }
+ 
 
 
 }
