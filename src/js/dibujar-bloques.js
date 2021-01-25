@@ -87,6 +87,14 @@ const dibujarInicio = () =>{
 
 }
 
+
+
+    /**************************/ 
+    /**************************/ 
+    /*********EVENTOS**********/
+    /**************************/ 
+    /**************************/ 
+
 const eventos = () =>{
 
     ul =document.querySelector('ul');
@@ -132,7 +140,7 @@ const eventos = () =>{
     /**************************/ 
     /**************************/ 
 
-    //EVENTO del btn-test para los test
+    //EVENTO PARA ACCEDER A LOS TESTS
     btnTests.addEventListener('click', ()=>{
         console.log('Click en el boton hacer test');
         //pendiente implementar test y su funcionamiento
@@ -147,7 +155,7 @@ const eventos = () =>{
     // selector flags
     flagListDOM=document.querySelectorAll('.flag');
    
-    //eventos flags
+    //EVENTO PARA VALIDACION DE FLAGS
     //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
     flagListDOM.forEach( (element, index) => {
 

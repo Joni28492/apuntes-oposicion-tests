@@ -8,18 +8,20 @@ import { FlagInput, respuestasArr } from "../classes/Flag.class";
         cantidadTemas              = new FlagInput(1, '¿cuantos temas tiene el temario?', '54', 'XX'),
         LO_SeguridadCiudadana      = new FlagInput(2, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes '),
         LO_CuerposYFuerzasSguridad = new FlagInput(3, '¿cuando se fundo la Ley Organica de cuerpos y fuerza de segirudad?', '2/86 13 marzo', 'X/XX XX mes'),
-        pruebaFlag5                = new FlagInput(4, 'la invilabilidad domiciliaria es un derecho ...', 'fundamental', 'palabra'),
-        pruebaFlag6                = new FlagInput(5, '¿en que año se creo la constitucion?', '1978', '19XX'),
-        pruebaFlag7                = new FlagInput(6, '¿cuantos temas tiene el temario?', '54', 'XX'),
-        pruebaFlag8                = new FlagInput(7, '¿cuando se fundo la Ley Organica Proteción de la seguridad ciudadana?', '4/2015 30 marzo', 'X/XXXX XX mes '),
-        pruebaFlag9                = new FlagInput(8, '¿en que año se creo la constitucion?', '1978', '19XX'),
-        pruebaFlag10               = new FlagInput(9, '¿cuantos temas tiene el temario?', '54', 'XX');
+        inviolabilidadDomiciliaria = new FlagInput(4, 'la invilabilidad domiciliaria es un derecho ...', 'fundamental', 'palabra'),
+        aprobacionEnLasCortes      = new FlagInput(5, 'La aprobación por las cortes de la constitución fue el ... de 1978', '31 octubre', 'XX mes'),
+        referendumConstitucional   = new FlagInput(6, 'referendum del pueblo Español fue el ', '6 diciembre', 'X mes'),
+        promulgacionConstitucion   = new FlagInput(7, 'Laconstitucion fue promulgada por el rey el ', '27 diciembre', 'XX mes'),
+        constitucionEnElBoe        = new FlagInput(8, 'La poblicación en el BOE de la constitucion fue el ', '29 diciembre', 'XX mes'),
+        rangoDchosFundamentales    = new FlagInput(9, 'Rango de articulos de los derechos fundamentales', '15-55', 'XX-XX');
 
     
 
 
 
-const arrHtmlFlag =[anioConstitucion, cantidadTemas, LO_SeguridadCiudadana,LO_CuerposYFuerzasSguridad, pruebaFlag5,  pruebaFlag6,  pruebaFlag7,  pruebaFlag8,  pruebaFlag9,  pruebaFlag10 ];
+const arrHtmlFlag =[anioConstitucion, cantidadTemas, LO_SeguridadCiudadana,LO_CuerposYFuerzasSguridad, 
+                    inviolabilidadDomiciliaria,  aprobacionEnLasCortes,  referendumConstitucional,
+                      promulgacionConstitucion,  constitucionEnElBoe,  rangoDchosFundamentales ];
 
 //const flagsBloqueConstitucion=[];
 
