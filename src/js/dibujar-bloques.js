@@ -1,5 +1,5 @@
 import {  respuestasArr } from './classes/Flag.class';
-import { arrHtmlFlag, flagHtmlFull } from './db/flags.db';
+import { arrHtmlFlag, flagHtmlFull, invalidarRespuestaFlag, validarRespuestaFlag } from './db/flags.db';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
 
@@ -10,7 +10,6 @@ let header = document.querySelector('header');
     header.classList='text-center mt-4 p-2 mb-1';
 let btnTests, ul, btnHome;
 let flagListDOM;
-
 
 
 //Esta funcion captura un array con los temarios y devulve 
@@ -54,9 +53,7 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
 
     
     divContainer.append(btnHome);
-
-   
-    
+  
 }
 
 
@@ -89,15 +86,7 @@ const dibujarInicio = () =>{
    
 
 }
-/*
-//resetear evento
-const resetEvent = (event) =>{
-    ul.textContent=`Form reset! Time stamp: ${event.timeStamp}`;
-}
-/*
-//reset ul
-ul.addEventListener('reset', resetEvent );
-*/
+
 const eventos = () =>{
 
     ul =document.querySelector('ul');
@@ -109,6 +98,8 @@ const eventos = () =>{
     //EVENTO del listado de bloques(PAGINA INICIAL)
     ul.addEventListener('click', (event)=>{
         
+       
+
         limpiarElemento(event.target.parentNode);
 
         let bloque=
@@ -121,7 +112,7 @@ const eventos = () =>{
             (event.target.textContent == bloques[3]) 
             ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'): null;
     
-        console.log('Click!!!');
+       
 
         if(bloque!==null) {
             
@@ -129,17 +120,13 @@ const eventos = () =>{
             btnHome=document.querySelector('#btn-home');
             btnHome.addEventListener('click', init);
 
-            
-
-            
         };
+
+
+        
 
     });
 
-/*
-    ulTemas=document.querySelector('ol');
-    ulTemas.addEventListener('click', console.log('Click en los temarios') );
-*/
     /**************************/ 
     /**************************/ 
     /**************************/ 
@@ -164,50 +151,21 @@ const eventos = () =>{
     //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
     flagListDOM.forEach( (element, index) => {
 
-
         element.children[2].addEventListener('click', (event)=>{
-            //console.log(`boton de flag, el id del boton es ${element.children[2].id}`);
+
             const   input    =element.children[1].value,
                     respuesta=respuestasArr[index],
                     btn      = element.children[2],
                     parent   = btn.parentNode,
-                    divAlert =document.createElement('div');
+                    divAlert =document.createElement('div'),
+                    bootStrapFijo="m-2 btn btn-";
             
-           if (!input) {
+            if (!input) { invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}warning`);}
             
-                btn.classList="m-2 btn btn-warning";
-                btn.textContent="Esta vacio introduce texto";
-
-                setTimeout(() => {
-                    btn.classList="m-2 btn btn-info";
-                    btn.textContent="Resolver";
-                }, 2000);
-
-           }else{
-                if (input === respuesta) {
-                    btn.classList="m-2 btn btn-success";
-                    btn.textContent="Correcta";
-                    btn.disabled=true;
-
-                    parent.removeChild(element.children[1]);
-
-                    divAlert.textContent=respuesta;
-                    divAlert.classList="alert alert-success";
-                    
-                    parent.insertBefore(divAlert, btn );
-
-                   
-                }else{
-                    btn.classList="m-2 btn btn-danger";
-                    btn.textContent="Incorrecta";
-                    
-
-                    setTimeout(() => {
-                        btn.classList="m-2 btn btn-info";
-                        btn.textContent="Resolver";
-                    }, 2000);
-                }
-           }//cierre ifelse padre
+            else{
+                if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}
+                else{invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}danger`);}
+            }
 
           
         });//fin de los input de las flags
@@ -227,7 +185,7 @@ const init = () =>{
     
     dibujarInicio();
     eventos();
-    console.log(respuestasArr);
+    //console.log(respuestasArr);
 }
 
 export {

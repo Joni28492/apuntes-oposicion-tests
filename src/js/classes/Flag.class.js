@@ -4,7 +4,7 @@ export let respuestasArr=[];
 export class FlagInput{
 
 
-    //posibilidad de  aplicar Singleton
+    
 
     constructor(id, pregunta, respuesta, placeHolderFormat) {
 
@@ -27,11 +27,6 @@ export class FlagInput{
             </div>
         `;
 
-        //respuestasArr.push(this.respuesta);
-       
-
-        
-
         return html;
     }
    
@@ -39,9 +34,5 @@ export class FlagInput{
     //devuelve true o false en funcion de la respuesta del usuario
     //que es el input.value, expresion ternaria
     comprobarFlag(respuestaUsuario){ return respuestaUsuario == this.respuesta && true ; }
-
-    
- 
-
 
 }

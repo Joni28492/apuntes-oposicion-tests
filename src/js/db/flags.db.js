@@ -25,10 +25,10 @@ const arrHtmlFlag =[anioConstitucion, cantidadTemas, LO_SeguridadCiudadana,LO_Cu
 
 //llama a cada elemento del array que le pasemos para dibujar sus flags
 const flagHtmlFull = (arr)=>{
-        console.warn(arr);
+        
         //randomizamos el array
         arr = shuffle(arr);
-        console.warn(arr);
+        
         //pusheamos las respuestas con su orden
         arr.forEach(element => {respuestasArr.push(element.respuesta);});
         
@@ -38,7 +38,37 @@ const flagHtmlFull = (arr)=>{
 }
 
 
+
+//Validacion de  flags
+
+const invalidarRespuestaFlag=(btn, texto, claseBootStrap, time=2000 )=>{
+        btn.classList=claseBootStrap;
+        btn.textContent=texto;
+
+        setTimeout(() => {
+                btn.classList="m-2 btn btn-info";
+                btn.textContent="Resolver";
+        }, time);
+
+}
+
+//para las respuestas correctas
+const validarRespuestaFlag = (btn,respuesta, divAlert, parent, element,texto="Correcta") =>{
+        btn.textContent=texto;
+        btn.disabled=true;
+
+        parent.removeChild(element.children[1]);
+        divAlert.textContent=respuesta;
+
+        divAlert.classList="alert alert-success";
+        parent.insertBefore(divAlert, btn );
+}
+
+
+
 export{
         flagHtmlFull,
-        arrHtmlFlag
+        arrHtmlFlag,
+        invalidarRespuestaFlag,
+        validarRespuestaFlag
 }
