@@ -127,6 +127,22 @@ const eventos = () =>{
             //capturamos el btn Home para volver al inicio
             btnHome=document.querySelector('#btn-home');
             btnHome.addEventListener('click', init);
+            ul=document.querySelector('ul');
+            //console.log(ul);
+
+            //este evento es para los temas
+            ul.addEventListener('click', (event)=>{
+                //console.log(event.target.textContent);
+                let tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
+                //console.log(tituloBloque);
+
+                let tema=(event.target.textContent == temasConstitucion[0])? console.log('Primer Tema del bloque 1'):
+                         (event.target.textContent == temasConstitucion[1])? console.log('segundo Tema del bloque 1'):
+                         (event.target.textContent == temasConstitucion[2])? console.log('Tercer Tema del bloque 1'):null;
+
+                        
+            });
+            
 
         };
 
@@ -155,7 +171,7 @@ const eventos = () =>{
     // selector flags
     flagListDOM=document.querySelectorAll('.flag');
    
-    //EVENTO PARA VALIDACION DE FLAGS
+    //EVENTO PARA VALIDACION DE FLAGS (posible encapsulacion)
     //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
     flagListDOM.forEach( (element, index) => {
 

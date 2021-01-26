@@ -7,7 +7,7 @@ const bloques = [
 const temasConstitucion = [
     'La Constitución Española de 1978 I',
     'La Constitución Española de 1978 II',
-    'La Constitución Española de 1978 II',
+    'La Constitución Española de 1978 III',
     'Estatuto de autonomia del Principado de Asturias',
     'Administración Local',
     'Derecho Administrativo',
