@@ -18,15 +18,15 @@ import { FlagInput, respuestasArr } from "../classes/Flag.class";
     
 
 
-
+//este array es para las pruebas en la pag inicial
 const arrHtmlFlag =[anioConstitucion, cantidadTemas, LO_SeguridadCiudadana,LO_CuerposYFuerzasSguridad, 
                     inviolabilidadDomiciliaria,  aprobacionEnLasCortes,  referendumConstitucional,
                       promulgacionConstitucion,  constitucionEnElBoe,  rangoDchosFundamentales ];
 
-//const flagsBloqueConstitucion=[];
+const flagsBloqueConstitucion=[anioConstitucion,aprobacionEnLasCortes,referendumConstitucional ];
 
 //llama a cada elemento del array que le pasemos para dibujar sus flags
-const flagHtmlFull = (arr)=>{
+const flagHtmlFull = (arr=arrHtmlFlag)=>{
         
         //randomizamos el array
         arr = shuffle(arr);
@@ -68,9 +68,42 @@ const validarRespuestaFlag = (btn,respuesta, divAlert, parent, element,texto="Co
 
 
 
+//esta funcion captura el listado de flags que tenemos en funcion 
+//del argumento que le mandemos del DOM
+
+const capturarEventFlags = (flagListDOM) =>{
+//childre[0]:: label pregunta     children[1]:: input        children[2]::Button 
+
+        flagListDOM.forEach( (element, index) => {
+
+                element.children[2].addEventListener('click', (event)=>{
+
+                const   input    =element.children[1].value,
+                        respuesta=respuestasArr[index],
+                        btn      = element.children[2],
+                        parent   = btn.parentNode,
+                        divAlert =document.createElement('div'),
+                        bootStrapFijo="m-2 btn btn-";
+                
+                if (!input) { invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}warning`);}
+                
+                else{
+                        if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}
+                        else{invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}danger`);}
+                }
+
+                
+                });//fin de los input de las flags
+                
+        });//fin de foreach FlagList
+}
+
+
 export{
         flagHtmlFull,
         arrHtmlFlag,
         invalidarRespuestaFlag,
-        validarRespuestaFlag
+        validarRespuestaFlag,
+        capturarEventFlags,
+        flagsBloqueConstitucion
 }

@@ -1,5 +1,5 @@
 import {  respuestasArr } from './classes/Flag.class';
-import { arrHtmlFlag, flagHtmlFull, invalidarRespuestaFlag, validarRespuestaFlag } from './db/flags.db';
+import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
 
@@ -8,6 +8,7 @@ import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico,
 let divContainer = document.querySelector('#container');
 let header = document.querySelector('header');
     header.classList='text-center mt-4 p-2 mb-1';
+
 let btnTests, ul, btnHome;
 let flagListDOM;
 
@@ -36,8 +37,7 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     //no nos permite igualarlo a []
     //es mas eficiente que hacer un foreach con pop()
     respuestasArr.length=0;
-    //console.warn(respuestasArr);
-  
+   
     header.innerText='';
     
     header.innerHTML=`<h1 class="text-white">${titulo}</h1>
@@ -48,10 +48,18 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     btnHome.classList='btn  btn-outline-primary mt-2 p-4';
     btnHome.id='btn-home';
 
-    btnHome.innerText='Página Principal';
-    divContainer.innerHTML= `<ul id="temario">${li}</ul>`;
+    //Creamos el listado de Flags, de momento para pruebas con el arr de constitucion
+    const flagPorTemasHTML=(titulo == 'La Constitución Española') ? flagHtmlFull(flagsBloqueConstitucion)
+                            :flagHtmlFull();
+  
 
+    btnHome.innerText='Página Principal';
+    divContainer.innerHTML= `<ul id="temario">${li}</ul>`+ flagPorTemasHTML;
+   
+    const flagEventDOM =document.querySelectorAll('.flag');
+    capturarEventFlags(flagEventDOM);
     
+  
     divContainer.append(btnHome);
   
 }
@@ -65,7 +73,6 @@ const dibujarInicio = () =>{
     header.innerHTML=`<h1 class="text-white">Oposiciones Policia Local</h1>
                       <h4 class="text-white p-2">Elige Bloque para estudiar</h4>`;
     
-
     const html=`
         ${header}
         <ul>
@@ -77,17 +84,12 @@ const dibujarInicio = () =>{
         <button id="btn-test" class=" btn  btn-outline-primary mt-2 p-4">Hacer Tests</button>
     `;
 
-
-   
     //dibujamos diferentes Flags
-    const flagListAddHTML=flagHtmlFull(arrHtmlFlag);
-
+    const flagListAddHTML=flagHtmlFull();
     divContainer.innerHTML=html + flagListAddHTML  + testSection ;
    
 
 }
-
-
 
     /**************************/ 
     /**************************/ 
@@ -133,6 +135,7 @@ const eventos = () =>{
             //este evento es para los temas
             ul.addEventListener('click', (event)=>{
                 //console.log(event.target.textContent);
+                //capturamos el titulo para saber en que tema estamos 
                 let tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
                 //console.log(tituloBloque);
 
@@ -140,62 +143,26 @@ const eventos = () =>{
                          (event.target.textContent == temasConstitucion[1])? console.log('segundo Tema del bloque 1'):
                          (event.target.textContent == temasConstitucion[2])? console.log('Tercer Tema del bloque 1'):null;
 
-                        
+                    //PENDIENTE DE TERMINAR         
             });
-            
-
         };
-
-
-        
-
     });
 
     /**************************/ 
     /**************************/ 
     /**************************/ 
     /**************************/ 
-
-    //EVENTO PARA ACCEDER A LOS TESTS
-    btnTests.addEventListener('click', ()=>{
-        console.log('Click en el boton hacer test');
-        //pendiente implementar test y su funcionamiento
-    });
-
-    /**************************/ 
-    /**************************/ 
-    /**************************/ 
-    /**************************/ 
-
 
     // selector flags
     flagListDOM=document.querySelectorAll('.flag');
-   
-    //EVENTO PARA VALIDACION DE FLAGS (posible encapsulacion)
-    //childre[0]:: label pregunta     childre[1]:: input        childre[2]::Button 
-    flagListDOM.forEach( (element, index) => {
+    capturarEventFlags(flagListDOM);
 
-        element.children[2].addEventListener('click', (event)=>{
 
-            const   input    =element.children[1].value,
-                    respuesta=respuestasArr[index],
-                    btn      = element.children[2],
-                    parent   = btn.parentNode,
-                    divAlert =document.createElement('div'),
-                    bootStrapFijo="m-2 btn btn-";
-            
-            if (!input) { invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}warning`);}
-            
-            else{
-                if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}
-                else{invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}danger`);}
-            }
-
-          
-        });//fin de los input de las flags
-        
-    });//fin de foreach FlagList
-
+    //EVENTO PARA ACCEDER A LOS TESTS
+    btnTests.addEventListener('click', ()=>{
+    console.log('Click en el boton hacer test');
+    //pendiente implementar test y su funcionamiento
+    });
 
 }
 
