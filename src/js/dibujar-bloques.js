@@ -18,9 +18,9 @@ const htmlPruebaTemas= `
     <ul>
 
         <hr>
-        <li></li>
-        <li></li>
-        <li class="btn alert-warning"></li>
+        <li class="col-md-3 btn alert-warning">Ejecutivo</li>
+        <li class="col-md-3 btn alert-warning">Legislativo</li>
+        <li class="col-md-3 btn alert-warning">Judicial</li>
         <hr>
        
     </ul>
@@ -29,18 +29,20 @@ const htmlPruebaTemas= `
 
 //esta funcion recibe un html y modifica el DOM, 
 //la utilizaremos para la teoria de cada tema
-//nos falta añadir los flags 
-const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion') =>{
+const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  arrFlags=flagsBloqueConstitucion) =>{
     
     header.children[0].textContent=titulo;
     header.children[1].textContent=subtitulo;
 
-    divContainer.innerHTML=html;
+    divContainer.innerHTML=html +  flagHtmlFull(arrFlags);
     
     let btn=document.createElement('button');
     btn.classList='btn  btn-outline-primary mt-2 p-4';
     btn.textContent='Volver al listado de temas';
     btn.id=`Home-${bloque}`;
+
+    const flagEventDOM =document.querySelectorAll('.flag');
+    capturarEventFlags(flagEventDOM);
 
     divContainer.append(btn);
     
