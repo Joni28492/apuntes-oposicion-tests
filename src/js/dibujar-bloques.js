@@ -1,5 +1,6 @@
 import {  respuestasArr } from './classes/Flag.class';
 import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
+import { helperTernarios, ternarioBloques } from './helpers';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
 
@@ -11,6 +12,40 @@ let header = document.querySelector('header');
 
 let btnTests, ul, btnHome;
 let flagListDOM;
+
+const htmlPruebaTemas= `
+<div class="alert alert-danger">
+    <ul>
+
+        <hr>
+        <li></li>
+        <li></li>
+        <li class="btn alert-warning"></li>
+        <hr>
+       
+    </ul>
+</div>`;
+
+
+//esta funcion recibe un html y modifica el DOM, 
+//la utilizaremos para la teoria de cada tema
+//nos falta añadir los flags 
+const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion') =>{
+    
+    header.children[0].textContent=titulo;
+    header.children[1].textContent=subtitulo;
+
+    divContainer.innerHTML=html;
+    
+    let btn=document.createElement('button');
+    btn.classList='btn  btn-outline-primary mt-2 p-4';
+    btn.textContent='Volver al listado de temas';
+    btn.id=`Home-${bloque}`;
+
+    divContainer.append(btn);
+    
+}
+
 
 
 //Esta funcion captura un array con los temarios y devulve 
@@ -31,7 +66,7 @@ const devolverListado= ( arr ) =>{
 //inyecta en el html los temas que le pasemos con un array 
 //utilizando la funcion devolverListado() en funcion del tema
 //tenemos titulo y subtitulo como parametro vacios por defecto
-const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
+export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlFlag) =>{
 
     //hacemos que el lenght del array sea 0,
     //no nos permite igualarlo a []
@@ -48,13 +83,13 @@ const dibujarTemas = (temaArr, titulo='', subtitulo='') =>{
     btnHome.classList='btn  btn-outline-primary mt-2 p-4';
     btnHome.id='btn-home';
 
-    //Creamos el listado de Flags, de momento para pruebas con el arr de constitucion
-    const flagPorTemasHTML=(titulo == 'La Constitución Española') ? flagHtmlFull(flagsBloqueConstitucion)
-                            :flagHtmlFull();
+    
+    
+                           
   
 
     btnHome.innerText='Página Principal';
-    divContainer.innerHTML= `<ul id="temario">${li}</ul>`+ flagPorTemasHTML;
+    divContainer.innerHTML= `<ul>${li}</ul>`+ flagHtmlFull(arrFlags);
    
     const flagEventDOM =document.querySelectorAll('.flag');
     capturarEventFlags(flagEventDOM);
@@ -108,21 +143,21 @@ const eventos = () =>{
     //EVENTO del listado de bloques(PAGINA INICIAL)
     ul.addEventListener('click', (event)=>{
         
-       
+        
 
-        limpiarElemento(event.target.parentNode);
-
-        let bloque=
+        const bloque=
             (event.target.textContent == bloques[0]) 
-            ? dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978'):
+            ? dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion):
             (event.target.textContent == bloques[1]) 
             ? dibujarTemas(temasCuerposYFuerzasSeguridad, 'Cuerpos y Fuerzas de seguridad', 'Ley Organica 2/86 13 Marzo'):
             (event.target.textContent == bloques[2]) 
             ? dibujarTemas(temasTrafico, 'Trafico', 'Trafico seguridad vial'):
             (event.target.textContent == bloques[3]) 
-            ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'): null;
+            ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP') : null;
     
-       
+        //preveer encapsulacion
+        
+        
 
         if(bloque!==null) {
             
@@ -138,15 +173,30 @@ const eventos = () =>{
                 //capturamos el titulo para saber en que tema estamos 
                 let tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
                 //console.log(tituloBloque);
+                //pendiente encapsulacion Ternarios
+                const tema=(event.target.textContent == temasConstitucion[0])? dibujarTeoria(htmlPruebaTemas, 'titulito', 'subtitulito'):
+                           (event.target.textContent == temasConstitucion[1])? console.log('Constitucion II'):
+                           (event.target.textContent == temasConstitucion[2])? console.log('Constitucion III'):
+                           (event.target.textContent == temasConstitucion[3])? console.log('Tema: Estatuto Autonomia Principado de Asturias'):
+                           (event.target.textContent == temasConstitucion[4])? console.log('Tema: Administracion Local'):
+                           (event.target.textContent == temasConstitucion[5])? console.log('Tema: Derecho Administrativo'):
+                           (event.target.textContent == temasConstitucion[6])? console.log('Tema: Acto administrativo'):
+                           (event.target.textContent == temasConstitucion[7])? console.log('Tema: Procedimiento Administrativo'):
+                           (event.target.textContent == temasConstitucion[8])? console.log('Tema: Personal al servicio de las corporaciones locales'):
+                           (event.target.textContent == temasConstitucion[9])? console.log('Tema: Haciendas Locales'):
+                           (event.target.textContent == temasConstitucion[10])? console.log('Tema: Historia de Asturias'):
+                           (event.target.textContent == temasConstitucion[11])? console.log('Tema: Geografia de Asturas'):null;
+                        
 
-                let tema=(event.target.textContent == temasConstitucion[0])? console.log('Primer Tema del bloque 1'):
-                         (event.target.textContent == temasConstitucion[1])? console.log('segundo Tema del bloque 1'):
-                         (event.target.textContent == temasConstitucion[2])? console.log('Tercer Tema del bloque 1'):null;
+               
 
                     //PENDIENTE DE TERMINAR         
             });
-        };
-    });
+
+        //si hago clic fuera del boton me borra la lista
+        //por ahora reiniciamos el inicio y randomiza las flags
+        }//else{init();}//FIN del if
+    });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
 
     /**************************/ 
     /**************************/ 
@@ -166,10 +216,6 @@ const eventos = () =>{
 
 }
 
-//limpiamos elemento capturado en el que hacemos clic
-const limpiarElemento = (elem) =>{
-    elem.textContent='';
-}
 
 
 const init = () =>{
@@ -180,5 +226,5 @@ const init = () =>{
 }
 
 export {
-    init 
+    init
 }
