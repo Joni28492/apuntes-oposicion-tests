@@ -1,8 +1,7 @@
 import {  respuestasArr } from './classes/Flag.class';
 import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
-import { temaConstitucionI } from './db/htmlteoria.db';
-import { helperTernarios, ternarioBloques } from './helpers';
-import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
+import { capturarBtnHome, ternarioBloquesFunction, ternarioTemaConstitucionFunction } from './helpers';
+import {bloques, temasConstitucion} from './temas-list';
 
 
 
@@ -11,10 +10,8 @@ let divContainer = document.querySelector('#container');
 let header = document.querySelector('header');
     header.classList='text-center mt-4 p-2 mb-1';
 
-let btnTests, ul, btnHome;
+let btnTests, ul, btnHome, btnHomeTema;
 let flagListDOM;
-
-
 
 //esta funcion recibe un html y modifica el DOM, 
 //la utilizaremos para la teoria de cada tema
@@ -36,34 +33,31 @@ const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  ar
     capturarEventFlags(flagEventDOM);
 
     divContainer.append(btn);
-    
+    /*
+    const btnHomeTema=divContainer.lastElementChild;
+    btnHomeTema.addEventListener('click',()=>{
+        dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion);
+        console.log('Teoria Dibujada');
+    });
+    */
+
 }
 
-
-
 //Esta funcion captura un array con los temarios y devulve 
-//una cadena de li con esos valores
-const devolverListado= ( arr ) =>{
+
+const devolverListado = ( arr ) =>{
 
     let cadenaListado='';
-
-    arr.forEach(element => {
-        //los cambios a los li se realizan aqui
-        cadenaListado+=
-        `<li class=" btn list-group-item btn-outline-primary mt-2 p-3">${element}</li>`;    
-    });
-
+    arr.forEach(tema => cadenaListado+=`<li class=" btn list-group-item btn-outline-primary mt-2 p-3">${tema}</li>`);
     return cadenaListado;
 }
 
+
 //inyecta en el html los temas que le pasemos con un array 
 //utilizando la funcion devolverListado() en funcion del tema
-//tenemos titulo y subtitulo como parametro vacios por defecto
 export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlFlag) =>{
 
-    //hacemos que el lenght del array sea 0,
-    //no nos permite igualarlo a []
-    //es mas eficiente que hacer un foreach con pop()
+
     respuestasArr.length=0;
    
     header.innerText='';
@@ -77,10 +71,6 @@ export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlF
     btnHome.id='btn-home';
 
     
-    
-                           
-  
-
     btnHome.innerText='Página Principal';
     divContainer.innerHTML= `<ul>${li}</ul>`+ flagHtmlFull(arrFlags);
    
@@ -89,7 +79,7 @@ export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlF
     
   
     divContainer.append(btnHome);
-  
+    
 }
 
 
@@ -115,8 +105,13 @@ const dibujarInicio = () =>{
     //dibujamos diferentes Flags
     const flagListAddHTML=flagHtmlFull();
     divContainer.innerHTML=html + flagListAddHTML  + testSection ;
-   
 
+
+    btnTests = document.querySelector('#btn-test');
+    //////////////////
+    //EVENTO PARA ACCEDER A LOS TESTS
+    btnTests.addEventListener('click', ()=>{console.log('Click en el boton hacer test');});
+    //////////////////////
 }
 
     /**************************/ 
@@ -128,64 +123,43 @@ const dibujarInicio = () =>{
 const eventos = () =>{
 
     ul =document.querySelector('ul');
-    btnTests = document.querySelector('#btn-test');
-    
-
+    //btnTests = document.querySelector('#btn-test');
     
 
     //EVENTO del listado de bloques(PAGINA INICIAL)
     ul.addEventListener('click', (event)=>{
         
         
-
-        const bloque=
-            (event.target.textContent == bloques[0]) 
-            ? dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion):
-            (event.target.textContent == bloques[1]) 
-            ? dibujarTemas(temasCuerposYFuerzasSeguridad, 'Cuerpos y Fuerzas de seguridad', 'Ley Organica 2/86 13 Marzo'):
-            (event.target.textContent == bloques[2]) 
-            ? dibujarTemas(temasTrafico, 'Trafico', 'Trafico seguridad vial'):
-            (event.target.textContent == bloques[3]) 
-            ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP') : null;
-    
-        //preveer encapsulacion
-        
-        
+        //fucion ternario para elegir bloque
+        const bloque=ternarioBloquesFunction(event);
+        //Por ahora encapsulamos por partes
 
         if(bloque!==null) {
             
-            //capturamos el btn Home para volver al inicio
-            btnHome=document.querySelector('#btn-home');
-            btnHome.addEventListener('click', init);
+            capturarBtnHome(btnHome);
             ul=document.querySelector('ul');
-            //console.log(ul);
+            
 
             //este evento es para los temas
             ul.addEventListener('click', (event)=>{
-                //console.log(event.target.textContent);
-                //capturamos el titulo para saber en que bloque estamos 
-                let tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
-                //console.log(tituloBloque);
-                //pendiente encapsulacion Ternarios
-                const tema=(event.target.textContent == temasConstitucion[0])? dibujarTeoria(temaConstitucionI, 'Constitución', 'Parte I'):
-                           (event.target.textContent == temasConstitucion[1])? console.log('Constitucion II'):
-                           (event.target.textContent == temasConstitucion[2])? console.log('Constitucion III'):
-                           (event.target.textContent == temasConstitucion[3])? console.log('Tema: Estatuto Autonomia Principado de Asturias'):
-                           (event.target.textContent == temasConstitucion[4])? console.log('Tema: Administracion Local'):
-                           (event.target.textContent == temasConstitucion[5])? console.log('Tema: Derecho Administrativo'):
-                           (event.target.textContent == temasConstitucion[6])? console.log('Tema: Acto administrativo'):
-                           (event.target.textContent == temasConstitucion[7])? console.log('Tema: Procedimiento Administrativo'):
-                           (event.target.textContent == temasConstitucion[8])? console.log('Tema: Personal al servicio de las corporaciones locales'):
-                           (event.target.textContent == temasConstitucion[9])? console.log('Tema: Haciendas Locales'):
-                           (event.target.textContent == temasConstitucion[10])? console.log('Tema: Historia de Asturias'):
-                           (event.target.textContent == temasConstitucion[11])? console.log('Tema: Geografia de Asturas'):null;
-                        
-
                
-
-                    //PENDIENTE DE TERMINAR         
+                //capturamos el titulo para saber en que bloque estamos 
+                const tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
+                //console.log(tituloBloque);
+                //funcion ternaria para elegir tema  de Cosntitucion
+                const tema=ternarioTemaConstitucionFunction(event);
+              
+                if (tema!==null) {
+                    //console.warn('No es nulo');
+                    btnHomeTema=divContainer.lastElementChild;
+                    btnHomeTema.addEventListener('click', ()=>{
+                        //problema en la funcion, probando con init no se pierde el addEventListener
+                        dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion);
+                        
+                    });
+                }
+                //PENDIENTE DE TERMINAR         
             });
-
         }
     });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
 
@@ -198,24 +172,18 @@ const eventos = () =>{
     flagListDOM=document.querySelectorAll('.flag');
     capturarEventFlags(flagListDOM);
 
-
-    //EVENTO PARA ACCEDER A LOS TESTS
-    btnTests.addEventListener('click', ()=>{
-    console.log('Click en el boton hacer test');
-    //pendiente implementar test y su funcionamiento
-    });
-
 }
-
-
 
 const init = () =>{
     
     dibujarInicio();
     eventos();
+   
     //console.log(respuestasArr);
 }
 
 export {
-    init
+    init,
+    dibujarTeoria,
+    btnHome
 }
