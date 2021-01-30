@@ -26,11 +26,13 @@ const arrHtmlFlag =[anioConstitucion, cantidadTemas, LO_SeguridadCiudadana,LO_Cu
 const flagsBloqueConstitucion=[anioConstitucion,aprobacionEnLasCortes,referendumConstitucional ];
 
 //llama a cada elemento del array que le pasemos para dibujar sus flags
-const flagHtmlFull = (arr=arrHtmlFlag)=>{
+const flagHtmlFull = (arr=arrHtmlFlag, randomize=true)=>{
         
         //randomizamos el array
-        arr = shuffle(arr);
-        
+        if (randomize == true) { arr = shuffle(arr); }
+        //console.log(respuestasArr);//activar para comprobar array de respuestas en ramdom
+
+        //hacer pruebas para cuando es uno solo
         //pusheamos las respuestas con su orden
         arr.forEach(element => {respuestasArr.push(element.respuesta);});
         
@@ -78,14 +80,14 @@ const capturarEventFlags = (flagListDOM) =>{
 
                 element.children[2].addEventListener('click', (event)=>{
 
-                const   input    =element.children[1].value,
+                const   input    =element.children[1].value.trim(),
                         respuesta=respuestasArr[index],
                         btn      = element.children[2],
                         parent   = btn.parentNode,
                         divAlert =document.createElement('div'),
                         bootStrapFijo="m-2 btn btn-";
                 
-                if (!input) { invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}warning`);}
+                if (!input) { invalidarRespuestaFlag(btn,"Esta vacío",`${bootStrapFijo}warning`);}
                 
                 else{
                         if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}

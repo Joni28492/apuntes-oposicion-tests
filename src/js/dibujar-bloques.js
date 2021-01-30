@@ -1,5 +1,6 @@
 import {  respuestasArr } from './classes/Flag.class';
 import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
+import { temaConstitucionI } from './db/htmlteoria.db';
 import { helperTernarios, ternarioBloques } from './helpers';
 import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from './temas-list';
 
@@ -13,24 +14,14 @@ let header = document.querySelector('header');
 let btnTests, ul, btnHome;
 let flagListDOM;
 
-const htmlPruebaTemas= `
-<div class="alert alert-danger">
-    <ul>
-
-        <hr>
-        <li class="col-md-3 btn alert-warning">Ejecutivo</li>
-        <li class="col-md-3 btn alert-warning">Legislativo</li>
-        <li class="col-md-3 btn alert-warning">Judicial</li>
-        <hr>
-       
-    </ul>
-</div>`;
 
 
 //esta funcion recibe un html y modifica el DOM, 
 //la utilizaremos para la teoria de cada tema
 const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  arrFlags=flagsBloqueConstitucion) =>{
     
+    respuestasArr.length=0;
+
     header.children[0].textContent=titulo;
     header.children[1].textContent=subtitulo;
 
@@ -172,11 +163,11 @@ const eventos = () =>{
             //este evento es para los temas
             ul.addEventListener('click', (event)=>{
                 //console.log(event.target.textContent);
-                //capturamos el titulo para saber en que tema estamos 
+                //capturamos el titulo para saber en que bloque estamos 
                 let tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
                 //console.log(tituloBloque);
                 //pendiente encapsulacion Ternarios
-                const tema=(event.target.textContent == temasConstitucion[0])? dibujarTeoria(htmlPruebaTemas, 'titulito', 'subtitulito'):
+                const tema=(event.target.textContent == temasConstitucion[0])? dibujarTeoria(temaConstitucionI, 'Constitución', 'Parte I'):
                            (event.target.textContent == temasConstitucion[1])? console.log('Constitucion II'):
                            (event.target.textContent == temasConstitucion[2])? console.log('Constitucion III'):
                            (event.target.textContent == temasConstitucion[3])? console.log('Tema: Estatuto Autonomia Principado de Asturias'):
@@ -195,9 +186,7 @@ const eventos = () =>{
                     //PENDIENTE DE TERMINAR         
             });
 
-        //si hago clic fuera del boton me borra la lista
-        //por ahora reiniciamos el inicio y randomiza las flags
-        }//else{init();}//FIN del if
+        }
     });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
 
     /**************************/ 
