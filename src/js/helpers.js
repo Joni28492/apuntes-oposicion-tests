@@ -15,11 +15,16 @@ const capturarBtnHome = (btnHome)=>{
     btnHome.addEventListener('click', init);
 }
 
-const capturarBtnHomeTema = (btnHomeTema) =>{
-    
+const capturarBtnHomeTema = (homeTema)=>{
+    homeTema=document.querySelector('#Home-Tema');
+    homeTema.addEventListener('click', ()=>{
+        dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion);
+    });
 }
 
-const ternarioBloquesFunction = (event) =>{
+
+
+const ternarioBloquesFunction = (event, ul) =>{
 
     const bloque=
     (event.target.textContent == bloques[0]) 
@@ -31,6 +36,7 @@ const ternarioBloquesFunction = (event) =>{
     (event.target.textContent == bloques[3]) 
     ? dibujarTemas(temasCodigoPenal, 'Código Penal', 'CP'): null;
 
+    capturaUlTemas(ul);
 
     return bloque;
 
@@ -55,6 +61,29 @@ const ternarioTemaConstitucionFunction = (event) =>{
                         
 }
 
+/*
+
+    ul=document.querySelector('ul');
+    //este evento es para los temas
+    ul.addEventListener('click', (event)=>{
+        
+        //capturamos el titulo para saber en que bloque estamos 
+        //const tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
+        //console.log(tituloBloque);
+        //funcion ternaria para elegir tema  de Cosntitucion
+        const tema=ternarioTemaConstitucionFunction(event);
+        console.log(tema);//undefined
+        //PENDIENTE DE TERMINAR         
+    }); */
+const capturaUlTemas = (ul) =>{
+        ul =document.querySelector('ul');
+
+        ul.addEventListener('click', (event)=>{
+
+            const tema=ternarioTemaConstitucionFunction(event);
+            console.log(tema, 'Boton funciona');
+        });
+}
 
 
 //despues iria if(bloque!==null)
@@ -74,6 +103,8 @@ const helperTernarios = (event, arr,temas ,callback) =>{
 export {
     ternarioBloquesFunction,
     ternarioTemaConstitucionFunction,
-    capturarBtnHome
+    capturarBtnHome,
+    capturarBtnHomeTema,
+    capturaUlTemas
 
 }

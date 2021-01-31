@@ -1,7 +1,7 @@
 import {  respuestasArr } from './classes/Flag.class';
 import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
-import { capturarBtnHome, ternarioBloquesFunction, ternarioTemaConstitucionFunction } from './helpers';
-import {bloques, temasConstitucion} from './temas-list';
+import { capturarBtnHome, ternarioBloquesFunction, capturarBtnHomeTema } from './helpers';
+import {bloques} from './temas-list';
 
 
 
@@ -27,20 +27,14 @@ const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  ar
     let btn=document.createElement('button');
     btn.classList='btn  btn-outline-primary mt-2 p-4';
     btn.textContent='Volver al listado de temas';
-    btn.id=`Home-${bloque}`;
+    btn.id=`Home-Tema`;
 
     const flagEventDOM =document.querySelectorAll('.flag');
     capturarEventFlags(flagEventDOM);
 
     divContainer.append(btn);
-    /*
-    const btnHomeTema=divContainer.lastElementChild;
-    btnHomeTema.addEventListener('click',()=>{
-        dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion);
-        console.log('Teoria Dibujada');
-    });
-    */
 
+   capturarBtnHomeTema(btnHomeTema);
 }
 
 //Esta funcion captura un array con los temarios y devulve 
@@ -79,6 +73,7 @@ export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlF
     
   
     divContainer.append(btnHome);
+    capturarBtnHome(btnHome);
     
 }
 
@@ -119,54 +114,17 @@ const dibujarInicio = () =>{
     /*********EVENTOS**********/
     /**************************/ 
     /**************************/ 
-
+    
+//algunos estan dentro de las funciones para capturar su reseteo
 const eventos = () =>{
 
     ul =document.querySelector('ul');
-    //btnTests = document.querySelector('#btn-test');
     
-
     //EVENTO del listado de bloques(PAGINA INICIAL)
     ul.addEventListener('click', (event)=>{
-        
-        
         //fucion ternario para elegir bloque
-        const bloque=ternarioBloquesFunction(event);
-        //Por ahora encapsulamos por partes
-
-        if(bloque!==null) {
-            
-            capturarBtnHome(btnHome);
-            ul=document.querySelector('ul');
-            
-
-            //este evento es para los temas
-            ul.addEventListener('click', (event)=>{
-               
-                //capturamos el titulo para saber en que bloque estamos 
-                const tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
-                //console.log(tituloBloque);
-                //funcion ternaria para elegir tema  de Cosntitucion
-                const tema=ternarioTemaConstitucionFunction(event);
-              
-                if (tema!==null) {
-                    //console.warn('No es nulo');
-                    btnHomeTema=divContainer.lastElementChild;
-                    btnHomeTema.addEventListener('click', ()=>{
-                        //problema en la funcion, probando con init no se pierde el addEventListener
-                        dibujarTemas(temasConstitucion, 'La Constitución Española', 'de 1978', flagsBloqueConstitucion);
-                        
-                    });
-                }
-                //PENDIENTE DE TERMINAR         
-            });
-        }
+        const bloque=ternarioBloquesFunction(event, ul);  
     });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
-
-    /**************************/ 
-    /**************************/ 
-    /**************************/ 
-    /**************************/ 
 
     // selector flags
     flagListDOM=document.querySelectorAll('.flag');
@@ -178,7 +136,6 @@ const init = () =>{
     
     dibujarInicio();
     eventos();
-   
     //console.log(respuestasArr);
 }
 
