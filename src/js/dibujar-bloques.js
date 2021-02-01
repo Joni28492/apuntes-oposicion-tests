@@ -1,7 +1,6 @@
 import {  respuestasArr } from './classes/Flag.class';
-import { leve } from './classes/Gravedad.class';
 import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
-import { capturarBtnHome, ternarioBloquesFunction, capturarBtnHomeTema } from './helpers';
+import { capturarBtnHome, ternarioBloquesFunction, capturarBtnHomeTema, capturaUlTemas } from './helpers';
 import { bloques } from './temas-list';
 
 
@@ -11,32 +10,10 @@ let divContainer = document.querySelector('#container');
 let header = document.querySelector('header');
     header.classList='text-center mt-4 p-2 mb-1';
 
-let btnTests, ul, btnHome, btnHomeTema;
+let btnTests, ulBloques, btnHome, btnHomeTema, ulTemas;
 let flagListDOM;
 
-//esta funcion recibe un html y modifica el DOM, 
-//la utilizaremos para la teoria de cada tema
-const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  arrFlags=flagsBloqueConstitucion) =>{
-    
-    respuestasArr.length=0;
 
-    header.children[0].textContent=titulo;
-    header.children[1].textContent=subtitulo;
-
-    divContainer.innerHTML=html +  flagHtmlFull(arrFlags);
-    
-    let btn=document.createElement('button');
-    btn.classList='btn  btn-outline-primary mt-2 p-4';
-    btn.textContent='Volver al listado de temas';
-    btn.id=`Home-Tema`;
-
-    const flagEventDOM =document.querySelectorAll('.flag');
-    capturarEventFlags(flagEventDOM);
-
-    divContainer.append(btn);
-
-   capturarBtnHomeTema(btnHomeTema);
-}
 
 //Esta funcion captura un array con los temarios y devulve 
 
@@ -50,8 +27,9 @@ const devolverListado = ( arr ) =>{
 
 //inyecta en el html los temas que le pasemos con un array 
 //utilizando la funcion devolverListado() en funcion del tema
-export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlFlag) =>{
+export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlFlag, ul=ulTemas) =>{
 
+    
 
     respuestasArr.length=0;
    
@@ -75,7 +53,32 @@ export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlF
   
     divContainer.append(btnHome);
     capturarBtnHome(btnHome);
+    capturaUlTemas(ul);
     
+}
+
+//esta funcion recibe un html y modifica el DOM, 
+//la utilizaremos para la teoria de cada tema
+const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  arrFlags=flagsBloqueConstitucion) =>{
+    
+    respuestasArr.length=0;
+
+    header.children[0].textContent=titulo;
+    header.children[1].textContent=subtitulo;
+
+    divContainer.innerHTML=html +  flagHtmlFull(arrFlags);
+    
+    let btn=document.createElement('button');
+    btn.classList='btn  btn-outline-primary mt-2 p-4';
+    btn.textContent='Volver al listado de temas';
+    btn.id=`Home-Tema`;
+
+    const flagEventDOM =document.querySelectorAll('.flag');
+    capturarEventFlags(flagEventDOM);
+
+    divContainer.append(btn);
+
+   capturarBtnHomeTema(btnHomeTema);
 }
 
 
@@ -119,13 +122,14 @@ const dibujarInicio = () =>{
 //algunos estan dentro de las funciones para capturar su reseteo
 const eventos = () =>{
 
-    ul =document.querySelector('ul');
+    ulBloques =document.querySelector('ul');
     
     //EVENTO del listado de bloques(PAGINA INICIAL)
-    ul.addEventListener('click', (event)=>{
-        //fucion ternario para elegir bloque
-        const bloque=ternarioBloquesFunction(event, ul);  
-        console.log(bloque, '****');
+    ulBloques.addEventListener('click', (event)=>{
+        //fucion ternario para elegir bloque,SECION BLOQUES
+        const bloque=ternarioBloquesFunction(event, ulBloques); 
+        //SECCION TEMAS 
+        console.log('hemos hecho click en un bloque');
     });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
 
     // selector flags

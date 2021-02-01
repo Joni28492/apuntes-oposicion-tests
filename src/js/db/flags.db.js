@@ -76,25 +76,22 @@ const capturarEventFlags = (flagListDOM) =>{
 
         flagListDOM.forEach( (element, index) => {
 
-                element.children[2].addEventListener('click', (event)=>{
+                element.children[2].addEventListener('click', ()=>{
 
-                const   input    =element.children[1].value.trim(),
-                        respuesta=respuestasArr[index],
-                        btn      = element.children[2],
-                        parent   = btn.parentNode,
-                        divAlert =document.createElement('div'),
-                        bootStrapFijo="m-2 btn btn-";
-                
-                if (!input) { invalidarRespuestaFlag(btn,"Esta vacío",`${bootStrapFijo}warning`);}
-                
-                else{
-                        if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}
-                        else{invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}danger`);}
-                }
-
-                
+                        const   input    =element.children[1].value.trim().toLowerCase(),
+                                respuesta=respuestasArr[index],
+                                btn      = element.children[2],
+                                parent   = btn.parentNode,
+                                divAlert =document.createElement('div'),
+                                bootStrapFijo="m-2 btn btn-";
+                        
+                        if (!input) { invalidarRespuestaFlag(btn,"Esta vacío",`${bootStrapFijo}warning`);}
+                        
+                        else{
+                                if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}
+                                else{invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}danger`);}
+                        }
                 });//fin de los input de las flags
-                
         });//fin de foreach FlagList
 }
 

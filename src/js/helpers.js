@@ -39,11 +39,13 @@ const ternarioBloquesFunction = (event, ul) =>{
 }
 
 
-const ternarioTemaConstitucionFunction = (event) =>{
+const ternarioTemaConstitucionFunction = (event,ul ) =>{
+    
+    
     
 
    const tema=  (event.target.textContent == temasConstitucion[0])? dibujarTeoria(temaConstitucionI, 'Constitución', 'Parte I'):
-                (event.target.textContent == temasConstitucion[1])? console.log('Constitucion II'):
+                (event.target.textContent == temasConstitucion[1])? dibujarTeoria(temaConstitucionI, 'Constitución', 'Parte II'):
                 (event.target.textContent == temasConstitucion[2])? console.log('Constitucion III'):
                 (event.target.textContent == temasConstitucion[3])? console.log('Tema: Estatuto Autonomia Principado de Asturias'):
                 (event.target.textContent == temasConstitucion[4])? console.log('Tema: Administracion Local'):
@@ -55,6 +57,8 @@ const ternarioTemaConstitucionFunction = (event) =>{
                 (event.target.textContent == temasConstitucion[10])? console.log('Tema: Historia de Asturias'):
                 (event.target.textContent == temasConstitucion[11])? console.log('Tema: Geografia de Asturas'):null;
 
+    capturaUlTemas(ul);
+
     return tema;
                         
 }
@@ -64,15 +68,15 @@ const capturaUlTemas = (ul) =>{
         ul =document.querySelector('ul');
 
         ul.addEventListener('click', (event)=>{
-
-            const tema=ternarioTemaConstitucionFunction(event);
-            console.log(tema, 'Boton funciona');
+            //hay una duplicidad pero solo si es null
+            const tema=ternarioTemaConstitucionFunction(event, ul);
+            //console.log( 'Boton funciona con dupliciadad');
         });
 }
 
 
 
-/*//ida de olla pero puede funcionar
+/*//ida de olla para no escribir tanto ternario pero puede funcionar
 //posibilidad de trabajar con el metodo filter y el index of
 const helperTernarios = (event, arr,temas ,callback) =>{
 
@@ -82,9 +86,9 @@ const helperTernarios = (event, arr,temas ,callback) =>{
    callback();
   
 }
-
-
 */
+
+
 export {
     ternarioBloquesFunction,
     ternarioTemaConstitucionFunction,
