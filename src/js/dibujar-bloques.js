@@ -1,7 +1,8 @@
 import {  respuestasArr } from './classes/Flag.class';
+import { leve } from './classes/Gravedad.class';
 import { arrHtmlFlag, capturarEventFlags, flagHtmlFull, flagsBloqueConstitucion } from './db/flags.db';
 import { capturarBtnHome, ternarioBloquesFunction, capturarBtnHomeTema } from './helpers';
-import {bloques} from './temas-list';
+import { bloques } from './temas-list';
 
 
 
@@ -124,6 +125,7 @@ const eventos = () =>{
     ul.addEventListener('click', (event)=>{
         //fucion ternario para elegir bloque
         const bloque=ternarioBloquesFunction(event, ul);  
+        console.log(bloque, '****');
     });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
 
     // selector flags
@@ -137,6 +139,7 @@ const init = () =>{
     dibujarInicio();
     eventos();
     //console.log(respuestasArr);
+    
 }
 
 export {

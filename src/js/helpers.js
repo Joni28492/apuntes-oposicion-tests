@@ -1,11 +1,7 @@
 import { flagsBloqueConstitucion } from "./db/flags.db";
 import { temaConstitucionI } from "./db/htmlteoria.db";
 import { dibujarTemas, dibujarTeoria, init} from "./dibujar-bloques";
-import {bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from "./temas-list";
-
-
-
-//const ternarioBloques = ['Primer Bloque','segundo Bloque','TercerBloque', 'cuarto Bloque'];
+import { bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from "./temas-list";
 
 
 
@@ -44,6 +40,8 @@ const ternarioBloquesFunction = (event, ul) =>{
 
 
 const ternarioTemaConstitucionFunction = (event) =>{
+    
+
    const tema=  (event.target.textContent == temasConstitucion[0])? dibujarTeoria(temaConstitucionI, 'Constitución', 'Parte I'):
                 (event.target.textContent == temasConstitucion[1])? console.log('Constitucion II'):
                 (event.target.textContent == temasConstitucion[2])? console.log('Constitucion III'):
@@ -61,20 +59,7 @@ const ternarioTemaConstitucionFunction = (event) =>{
                         
 }
 
-/*
 
-    ul=document.querySelector('ul');
-    //este evento es para los temas
-    ul.addEventListener('click', (event)=>{
-        
-        //capturamos el titulo para saber en que bloque estamos 
-        //const tituloBloque=ul.parentNode.parentNode.parentNode.children[1].children[0].children[0].textContent
-        //console.log(tituloBloque);
-        //funcion ternaria para elegir tema  de Cosntitucion
-        const tema=ternarioTemaConstitucionFunction(event);
-        console.log(tema);//undefined
-        //PENDIENTE DE TERMINAR         
-    }); */
 const capturaUlTemas = (ul) =>{
         ul =document.querySelector('ul');
 
@@ -86,8 +71,8 @@ const capturaUlTemas = (ul) =>{
 }
 
 
-//despues iria if(bloque!==null)
-/*
+
+/*//ida de olla pero puede funcionar
 //posibilidad de trabajar con el metodo filter y el index of
 const helperTernarios = (event, arr,temas ,callback) =>{
 
