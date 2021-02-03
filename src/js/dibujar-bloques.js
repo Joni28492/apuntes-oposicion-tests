@@ -13,7 +13,7 @@ let header = document.querySelector('header');
 let btnTests, ulBloques, btnHome, btnHomeTema, ulTemas;
 let flagListDOM;
 
-
+let volverTemasStatus='';//esta es para controlar en que seccion nos encontramos
 
 //Esta funcion captura un array con los temarios y devulve 
 
@@ -54,6 +54,9 @@ export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlF
     divContainer.append(btnHome);
     capturarBtnHome(btnHome);
     capturaUlTemas(ul);
+
+    volverTemasStatus=document.querySelector('h1').textContent;
+   
     
 }
 
@@ -86,6 +89,9 @@ const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  ar
 //dibujamos los bloques de los temas 
 const dibujarInicio = () =>{
 
+    volverTemasStatus='';
+   
+   
     
     header.innerHTML=`<h1 class="text-white">Oposiciones Policia Local</h1>
                       <h4 class="text-white p-2">Elige Bloque para estudiar</h4>`;
@@ -129,7 +135,7 @@ const eventos = () =>{
         //fucion ternario para elegir bloque,SECION BLOQUES
         const bloque=ternarioBloquesFunction(event, ulBloques); 
         //SECCION TEMAS 
-        console.log('hemos hecho click en un bloque');
+       // console.log('hemos hecho click en un bloque');
     });//FIN EVENTO del listado de bloques(PAGINA INICIAL)
 
     // selector flags
@@ -149,5 +155,6 @@ const init = () =>{
 export {
     init,
     dibujarTeoria,
-    btnHome
+    btnHome,
+    volverTemasStatus
 }
