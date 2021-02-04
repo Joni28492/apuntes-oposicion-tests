@@ -48,19 +48,50 @@ const temaConstitucionI= `
    </div>
   
 
+    <div class="container alert alert-dark text-start">
+        <h4>Principios generales constitucionales</h4>
+        <p>Estado social, democratico y de derecho</p>
+       
+            <p class="text-start"><strong>Social:</strong>Promueve la igualdad</p>
+            <p class="text-start"><strong>Democratico:</strong>Doble vertiente la soberania reside en el pueblo, requiere pluralismo politico</p>
+            <p class="text-start"><strong>De derecho:</strong>La constitución establece el imperio de la ley y garantiza la supremacia del 
+            derecho sobre los poderes públicos</p>
+            <em>Iretroactividad y publicidad de la norma <small>Art. 9.3</small> </>
+        
+    
+    </div>
+
+
    <div class="container alert alert-primary" >
         <h4>Estructura y contenido</h4>
         <hr>
-        <div>
-            <h6>Título Preliminar y Título I</h6>
-            <p>Parte dogmatica</p>
-        </div>
+        <div class="alert-dark col-md-6 container-fluid">
+            <h3>Parte Dogmática</h3>
+        
+            <div >
+                <h6> <strong>Título Preliminar</strong>(Art. 1-9) y
+                 <strong>Título I</strong> - Derechos fundamentales (Art. 10-55)</h6>
+                
+            </div>
 
-        <div >
-            <h6>Título II al X</h6>
-            <p>Parte organica</p>
+            <div >
+                <h6> <strong>Título I</strong>  (Art. 10-55)</h6>
+                <p>Derechos fundamentales</p>
+                <p>importante el capitulo II
+                    Sección 1ª (Art. 15-29)
+                    Sección 2ª (ARt. 30-38)
+                </p>
+            </div>
         </div>
+        <div class="container-fluid alert-dark col-md-6">
+            <h3>Parte orgánica</h3>
 
+            <div >
+                <h6><strong>Título II al X</strong></h6>
+                <p></p>
+            </div>
+
+        </div>
       
    </div>
     
