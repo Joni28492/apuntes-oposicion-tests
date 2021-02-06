@@ -1,4 +1,4 @@
-import { art139Ref, caracteristicasGeneralesConstitucion, disposicionesConstitucion, estadoAutonomias, estructuraYContenidoConstitucion, fechasConstitucion, introDerechosFundamentales, principiosGeneralesConstitucionales, tresGrandesPoderes, valoresSuperioresConstitucion } from "./constitucionFragments";
+import { art139Ref, art14ref, caracteristicasGeneralesConstitucion, disposicionesConstitucion, estadoAutonomias, estructuraYContenidoConstitucion, fechasConstitucion, introDerechosFundamentales, principiosGeneralesConstitucionales, SeccionPrimera15_29, tresGrandesPoderes, valoresSuperioresConstitucion } from "./constitucionFragments";
 
 const temaConstitucionI= `
 <div class="alert alert-info">
@@ -14,6 +14,21 @@ const temaConstitucionI= `
    ${art139Ref}
    ${estadoAutonomias}
    ${introDerechosFundamentales}
+   ${art14ref}
+   ${SeccionPrimera15_29}
+
+   <ul class="alert-success">
+
+        <hr>
+        <h4>Garantias (Art- 14-38)- vinculan a todos los poderes públicos</h4>
+        <li class="col-md-3 btn alert-info">Normativas de reserva de ley</li>
+        <li class="col-md-3 btn alert-info">Institucionales</li>
+        <li class="col-md-3 btn alert-info">Jurisdiccionales</li>
+        <hr>
+        regulación Art. 161.1
+    </ul>
+
+
 
 </div>
 `;
