@@ -155,15 +155,15 @@ const introDerechosFundamentales =`
     <h3>Título I - Cápitulo II</h3>
 
     <div class="container alert-primary ">
-        
+  
         <ul >
 
-            <hr>
+           
             <h4>Libertades públicas</h4>
             <li class="col-md-3 btn alert-success">Personales</li>
             <li class="col-md-3 btn alert-success">Civiles</li>
             <li class="col-md-3 btn alert-success">Politicas</li>
-            <hr>
+            
 
         </ul>
 

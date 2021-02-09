@@ -19,13 +19,13 @@ const temaConstitucionI= `
 
    <ul class="alert-success">
 
-        <hr>
+       
         <h4>Garantias (Art- 14-38)- vinculan a todos los poderes públicos</h4>
-        <li class="col-md-3 btn alert-info">Normativas de reserva de ley</li>
-        <li class="col-md-3 btn alert-info">Institucionales</li>
-        <li class="col-md-3 btn alert-info">Jurisdiccionales</li>
-        <hr>
-        regulación Art. 161.1
+        <li class="col-md-3 btn alert-info m-2">Normativas de reserva de ley</li>
+        <li class="col-md-3 btn alert-info m-2">Institucionales</li>
+        <li class="col-md-3 btn alert-info m-2">Jurisdiccionales</li>
+    
+        <p>regulación Art. 161.1</p>
     </ul>
 
 
