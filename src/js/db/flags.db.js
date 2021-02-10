@@ -23,7 +23,7 @@ const arrHtmlFlag =[flag0, flag1, flag2,flag3, flag4,  flag5,  flag6, flag7,  fl
 
 const flagsBloqueConstitucion=[flag0,flag5,flag6 ];
 
-//esta funcion necesita un array de flagsque sea de los que hemos dibujado
+//esta funcion necesita un array de flagsHtml que sea de los que hemos dibujado
 //pordefecto estan randomizadas, y lo podemos poner el limite de preguntas
 const flagHtmlFull = (arr=arrHtmlFlag, randomize=true, limit=8)=>{
         
@@ -31,8 +31,7 @@ const flagHtmlFull = (arr=arrHtmlFlag, randomize=true, limit=8)=>{
         if (randomize == true) { arr = shuffle(arr); }
         //console.log(respuestasArr);//activar para comprobar array de respuestas en ramdom
 
-        
-        //hacer pruebas para cuando es uno solo
+
         //pusheamos las respuestas con su orden
         arr.forEach((element, index) => {
                 if(index < limit) respuestasArr.push(element.respuesta);

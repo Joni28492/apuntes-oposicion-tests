@@ -109,6 +109,9 @@ const dibujarInicio = () =>{
 
     //dibujamos diferentes Flags
     const flagListAddHTML=flagHtmlFull();
+
+    
+
     divContainer.innerHTML=html + flagListAddHTML  + testSection ;
 
 

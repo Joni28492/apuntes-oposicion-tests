@@ -231,16 +231,16 @@ const SeccionPrimera15_29=`
 
   <h5>Derechos en la esfera privada</h5>
   
-  <li  class="col-md-3 btn alert-danger m-1"><strong>Art. 18</strong>
-        <ul>
+  <div  class="col-md-3 btn alert-danger m-1"><strong>Art. 18</strong>
+        
         <hr>
-        <li  class="col-md-3 btn list-group-item-danger m-1">1. Derecho al honor y  a la intimidad personal, familiar y a la propia imagen</li>
+        <p  class="btn  m-1">1. Derecho al honor y  a la intimidad personal, familiar y a la propia imagen</p>
         <p class="alert-warning">Registro bajo permiso, resolución judicial o delito flagrante</p>
-        <li  class="col-md-3 btn list-group-item-danger m-1">2. inviolabilidad domiciliaria</li>
-        <li  class="col-md-3 btn list-group-item-danger m-1">3. secreto de las comunicaciones, salvo resolución judicial</li>
-        <li  class="col-md-3 btn list-group-item-danger m-1">4. Limitación del uso de la informatica para garantizar el honor y la imagen</li>
-        </ul>
-  </li>
+        <p  class=" btn  m-1">2. inviolabilidad domiciliaria</p>
+        <p  class=" btn  m-1">3. secreto de las comunicaciones, salvo resolución judicial</p>
+        <p  class=" btn  m-1">4. Limitación del uso de la informatica para garantizar el honor y la imagen</p>
+        
+  </div>
 
 
   <li  class="col-md-3 btn alert-danger m-1"><strong>Art. 19 Libertad de residencia y circulación</strong>
@@ -251,15 +251,15 @@ const SeccionPrimera15_29=`
   </p>
   </li>
 
-  <li  class="col-md-3 btn alert-danger m-1"><strong>Art. 20 Libertad de expresión</strong>
-    <ul>
+  <li  class=" btn alert-danger m-1"><strong>Art. 20 Libertad de expresión</strong>
+    
     <hr>
-    <li  class="col-md-3 btn list-group-item-danger m-1">Pensamientos, ideas y opiniones, palabra, escrito u otros medios</li>
-    <li  class="col-md-3 btn list-group-item-danger m-1">Producción y creación literaria, artistica, cientifica y técnica</li>
-    <li  class="col-md-3 btn list-group-item-danger m-1">Libertad de catedra</li>
-    <p class="alert-warning">Con limitaciones referidas al honor</p>
-    <li  class="col-md-3 btn list-group-item-danger m-1">Libertad de información</li>
-    </ul> 
+    <p  class=" btn  m-1">Pensamientos, ideas y opiniones, palabra, escrito u otros medios</p>
+    <p  class=" btn  m-1">Producción y creación literaria, artistica, cientifica y técnica</p>
+    <p  class=" btn  m-1">Libertad de catedra</p>
+    <p class="alert-warning text-secondary">Con limitaciones referidas al honor</p>
+    <p  class="btn  m-1">Libertad de información</p>
+    
   </li>
 
 
