@@ -305,6 +305,156 @@ const SeccionPrimera15_29=`
 
 `;
 
+const grantiasConstitucionales = `
+<ul class="alert-success">
+
+       
+<h4>Garantias (Art- 14-38)- vinculan a todos los poderes públicos</h4>
+<li class="col-md-3 btn alert-info m-2">Normativas de reserva de ley</li>
+<li class="col-md-3 btn alert-info m-2">Institucionales</li>
+<li class="col-md-3 btn alert-info m-2">Jurisdiccionales</li>
+
+<p>regulación Art. 161.1</p>
+</ul>
+`;
+
+
+const tribunarConstitucional = `
+
+   
+
+<div class="container alert-dark">
+<h3>Tribunal Constitucional</h3>
+<p>Título IX (Art. 159-165)</p>
+<hr>
+<p>Organo constitucional único en su orden y con jurisdiccion en todo el territorio español</p>
+
+<ul class="list-group">
+
+
+
+
+<li class="list-group-item list-group-item-warning m-1">velar por las normas dictadas</li>
+<li class="list-group-item list-group-item-warning m-1">preservar y garantizar derechos y libertades</li>
+<li class="list-group-item list-group-item-warning m-1">dotar a la constitucion de verdadera eficacia juridica</li>
+<li class="list-group-item list-group-item-warning m-1">Resolver conflictos entre estado y CCAA</li>
+
+
+</ul>
+
+
+<hr>
+
+<div class="container">
+  <ul class="list-group">
+
+
+    <li class="list-group-item list-group-item-success m-1">12 miembros nombrados por el rey</li>
+    <li class="list-group-item list-group-item-primary">4 Congreso de los diputados</li>
+    <li class="list-group-item list-group-item-primary">4 Senado</li>
+    <li class="list-group-item list-group-item-primary">2 Gobierno</li>
+    <li class="list-group-item list-group-item-primary">2 Pleno del consejo general del poder judicial</li>
+
+</ul>
+  
+  
+</div>
+
+<hr>
+<div class="container m-2">
+  
+  <p>
+    
+    Designación para magistrado del Tribunal constitucional se hace por 9 años; magistrados o fiscales,
+    profesores de universidad, funcionarios públicos o abogados, todos ellos juristas de reconocida competencia, 15 años de ejercicio profesional, renovandose por terceras partes cada 3 años
+  </p>
+</div>
+
+<hr>
+
+
+
+<div class="list-group">
+ 
+ <h3>Competencias</h3>
+
+<a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex justify-content-between">
+    <h5 class="mb-1">Recurso de inconstitucionalidad</h5>
+  </div>
+  <p class="mb-1">ante la ley</p>
+
+</a>
+ 
+  <a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Cuestion de inconstitucionalidad</h5>
+  </div>
+  <p class="mb-1">Aplicación en juicios</p>
+
+</a>
+ 
+</a>
+ 
+  <a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Recurso de amparo</h5>
+  </div>
+  <p class="mb-1">Aplicación en juicios</p>
+
+</a>
+
+<a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Declaración de constitucionalidad de lostratados</h5>
+  </div>
+  <p class="mb-1">Internacional</p>
+
+</a>
+
+<a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Conflictos de las competencias</h5>
+  </div>
+  <p class="mb-1">Entre CCAA y Estado</p>
+
+</a>
+
+<a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Conflictos entre organos constitucionales</h5>
+  </div>
+  
+
+</a>
+ 
+ <a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">La impugnación de disposiciones sin fuerza de ley y resoluciones de las CCAA </h5>
+  </div>
+  <p class="mb-1">El tribunal Constitucional debera ratificarla en un plazo no superior a 5 meses</p>
+
+</a>
+ 
+<a href="#" class="list-group-item list-group-item-action ">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Conflictos en la defensa de la autonomía local</h5>
+  </div>
+
+
+</a>
+ 
+ <p>
+   Las sentencias del Tribunal Constitucional se publicaran en el BOE y no cabe recurso alguno 
+   contra ellas, salvo que en el fallo se disponga otra cosa, subsistira la vigencia de la leyen la parte no afectada por la inconstitucionalidad
+ </p>
+ 
+ </div>
+ </div>
+ 
+
+`;
+
 export{
     fechasConstitucion,
     tresGrandesPoderes,
@@ -317,5 +467,7 @@ export{
     estadoAutonomias,
     introDerechosFundamentales,
     art14ref,
-    SeccionPrimera15_29
+    SeccionPrimera15_29,
+    grantiasConstitucionales,
+    tribunarConstitucional
 }

@@ -13,19 +13,42 @@ import { FlagInput, respuestasArr } from "../classes/Flag.class";
         flag6 = new FlagInput(6, 'referendum del pueblo Español fue el ', '6 diciembre', 'X mes'),
         flag7 = new FlagInput(7, 'La constitucion fue promulgada por el rey el ', '27 diciembre', 'XX mes'),
         flag8 = new FlagInput(8, 'La poblicación en el BOE de la constitucion fue el ', '29 diciembre', 'XX mes'),
-        flag9 = new FlagInput(9, 'Rango de articulos de los derechos fundamentales', '15-55', 'XX-XX');
-
-    
-
+        flag9 = new FlagInput(9, 'Rango de articulos de los derechos fundamentales', '15-55', 'XX-XX'),
+        
+        //flags Constitucion
+        flagConstitucion1 =new FlagInput(10, '¿Cuantos Art tiene la constitución?', '169', 'XXX'),
+        flagConstitucion2 =new FlagInput(11, 'disposiciones de la constitución?', '4911', 'XXXX'),
+        flagConstitucion3 =new FlagInput(12, '¿cual de las siguientes no es una de las caracteristicas generales de la constitucion?rigida, extensa, escrita, flexible ', 'flexible', 'palabra'),
+        flagConstitucion4 =new FlagInput(13, 'El estado social promueve la ...', 'igualdad', 'palabra'),
+        flagConstitucion5 =new FlagInput(14, 'cuando la soberania reside en el pueblo, y requiere pluralismo politico estamos en un estado ...', 'democratico', 'palabra'),
+        flagConstitucion6 =new FlagInput(15, 'estamos en un estado de derecho', 'si', 'si o no'),
+        flagConstitucion7 =new FlagInput(16, '¿En que  Art de la constitución se promueve el pluralismo politico ?', '6', 'X'),
+        flagConstitucion8 =new FlagInput(17, '¿el territorio en España se divide en ... , ... , ... ?', 'municipios-provincias-CCAA', 'palabra-palabra-acronimo'),
+        flagConstitucion9 =new FlagInput(18, 'libertades publicas ... , ... , ...', 'personales-civiles-politicas', 'palabra-palabra-palabra'),
+        flagConstitucion10 =new FlagInput(19, 'Art. .....   Los Españoles son iguales ante la ley', '14', 'Articulo'),
+        flagConstitucion11 =new FlagInput(20, '  Art 15 derecho a  la ...', 'vida', 'palabra'),
+        flagConstitucion12 =new FlagInput(21, '  Art 16 libertad de  ...', 'ideologia', 'palabra'),
+        flagConstitucion13 =new FlagInput(22, '  Art 15 derecho a  la ...', 'libertad', 'palabra'),
+        flagConstitucion14 =new FlagInput(23, '  Art 18.1 derecho al ...', 'honor', 'palabra'),
+        flagConstitucion15 =new FlagInput(24, '  Art 18.2', 'inviolabilidad-domiciliaria', 'palabra-palabra'),
+        flagConstitucion16 =new FlagInput(25, '  Art 18.3 secreto de las ...', 'comunicaciones', 'palabra'),
+        flagConstitucion17 =new FlagInput(26, '  Art 18.4 limitacion del use de la ....', 'informatica', 'palabra'),
+        flagConstitucion18 =new FlagInput(27, '  Art 19 liberta de  ... y ...', 'residencia-circulacion', 'palabra-palabra'),
+        flagConstitucion19 =new FlagInput(28, '  Art 20.3 libertad de  ...', 'catedra', 'palabra'),
+        flagConstitucion20 =new FlagInput(23, ' libertad de catedra con limitaciones referidas al ...', 'honor', 'palabra');
 
 //este array es para las pruebas en la pag inicial
 const arrHtmlFlag =[flag0, flag1, flag2,flag3, flag4,  flag5,  flag6, flag7,  flag8,  flag9 ];
 
-const flagsBloqueConstitucion=[flag0,flag5,flag6 ];
+const flagsBloqueConstitucion=[flag0,flag5,flag6, 
+flagConstitucion1,flagConstitucion2,flagConstitucion3,flagConstitucion4,flagConstitucion5,flagConstitucion6,flagConstitucion7,flagConstitucion8,
+flagConstitucion9,flagConstitucion10, flagConstitucion11,flagConstitucion12,flagConstitucion13,flagConstitucion14,flagConstitucion15,flagConstitucion16,
+flagConstitucion17,flagConstitucion18,flagConstitucion19,flagConstitucion20
+];
 
 //esta funcion necesita un array de flagsHtml que sea de los que hemos dibujado
 //pordefecto estan randomizadas, y lo podemos poner el limite de preguntas
-const flagHtmlFull = (arr=arrHtmlFlag, randomize=true, limit=8)=>{
+const flagHtmlFull = (arr=arrHtmlFlag, randomize=true, limit=15)=>{
         
         //randomizamos el array
         if (randomize == true) { arr = shuffle(arr); }

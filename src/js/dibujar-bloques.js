@@ -147,7 +147,10 @@ const eventos = () =>{
 
 }
 
+
+
 const init = () =>{
+
     respuestasArr.length=0;
     dibujarInicio();
     eventos();
