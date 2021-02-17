@@ -62,7 +62,7 @@ export const dibujarTemas = (temaArr, titulo='', subtitulo='', arrFlags=arrHtmlF
 
 //esta funcion recibe un html y modifica el DOM, 
 //la utilizaremos para la teoria de cada tema
-const dibujarTeoria = (html, titulo='', subtitulo='', bloque='Constitucion',  arrFlags=flagsBloqueConstitucion) =>{
+const dibujarTeoria = (html, titulo='', subtitulo='',   arrFlags=flagsBloqueConstitucion) =>{
     
     respuestasArr.length=0;
 

@@ -455,19 +455,29 @@ const tribunarConstitucional = `
 
 `;
 
+const constitucionTemaI =`
+<div class="alert alert-info">
+ <h1>Cosntitución I</h1>
+ 
+   ${tresGrandesPoderes}
+   ${fechasConstitucion}
+   ${disposicionesConstitucion}
+   ${caracteristicasGeneralesConstitucion}
+   ${principiosGeneralesConstitucionales}
+   ${estructuraYContenidoConstitucion}
+   ${valoresSuperioresConstitucion}
+   ${art139Ref}
+   ${estadoAutonomias}
+   ${introDerechosFundamentales}
+   ${art14ref}
+   ${SeccionPrimera15_29}
+   ${grantiasConstitucionales}
+   ${tribunarConstitucional}
+    
+</div>
+`
+
 export{
-    fechasConstitucion,
-    tresGrandesPoderes,
-    disposicionesConstitucion,
-    caracteristicasGeneralesConstitucion,
-    principiosGeneralesConstitucionales,
-    estructuraYContenidoConstitucion,
-    valoresSuperioresConstitucion,
-    art139Ref,
-    estadoAutonomias,
-    introDerechosFundamentales,
-    art14ref,
-    SeccionPrimera15_29,
-    grantiasConstitucionales,
-    tribunarConstitucional
+   
+    constitucionTemaI
 }

@@ -1,27 +1,18 @@
-import { art139Ref, art14ref, caracteristicasGeneralesConstitucion, disposicionesConstitucion, estadoAutonomias, estructuraYContenidoConstitucion, fechasConstitucion, grantiasConstitucionales, introDerechosFundamentales, principiosGeneralesConstitucionales, SeccionPrimera15_29, tresGrandesPoderes, tribunarConstitucional, valoresSuperioresConstitucion } from "./constitucionFragments";
+import { constitucionTemaI } from "./constitucionFragments";
 
-const temaConstitucionI= `
-<div class="alert alert-info">
- <h1>Cosntitución I</h1>
- 
-   ${tresGrandesPoderes}
-   ${fechasConstitucion}
-   ${disposicionesConstitucion}
-   ${caracteristicasGeneralesConstitucion}
-   ${principiosGeneralesConstitucionales}
-   ${estructuraYContenidoConstitucion}
-   ${valoresSuperioresConstitucion}
-   ${art139Ref}
-   ${estadoAutonomias}
-   ${introDerechosFundamentales}
-   ${art14ref}
-   ${SeccionPrimera15_29}
-  ${grantiasConstitucionales}
+const temaConstitucionI= constitucionTemaI,
+    temaConstitucionII='',
+    temaConstitucionIII='',
+    estatutoAutonomiaAsturias='',
+    administracionLocal='',
+    derechoAdministrativo='',
+    actoAdministrativo='',
+    procedimientoAdministrativo='',
+    personalServicioCorporacionesLocales='',
+    haciendasLocales='',
+    historiaAsturias='',
+    geografiaAsturias='';
 
-    ${tribunarConstitucional}
-    
-</div>
-`;
 
 
 const temaCuerposyfuerzasI= `

@@ -1,5 +1,6 @@
 import { flagsBloqueConstitucion } from "./db/flags.db";
 import { temaConstitucionI, temaCuerposyfuerzasI, temaTraficoI, temaPenalI } from "./db/htmlteoria.db";
+import { policiaMedioambiental } from "./db/medioAmbienteFragments";
 import { dibujarTemas, dibujarTeoria, init, volverTemasStatus} from "./dibujar-bloques";
 import { bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from "./temas-list";
 
@@ -89,7 +90,7 @@ const ternarioTemaFuerzasYCuerposDeSeguridad = (event,ul ) =>{
                 (event.target.textContent == temasCuerposYFuerzasSeguridad[8])? console.log('Tema: Personal al servicio de las corporaciones locales'):
                 (event.target.textContent == temasCuerposYFuerzasSeguridad[9])? console.log('Tema: Haciendas Locales'):
                 (event.target.textContent == temasCuerposYFuerzasSeguridad[10])? console.log('Tema: Historia de Asturias'):
-                (event.target.textContent == temasCuerposYFuerzasSeguridad[11])? console.log('Tema: Geografia de Asturas'):null;
+                (event.target.textContent == temasCuerposYFuerzasSeguridad[11])? dibujarTeoria(policiaMedioambiental, 'Policía Medioambiental', 'Competencias, servicio y gestión'):null;
 
     capturaUlTemas(ul);
 
