@@ -1,6 +1,7 @@
 import { flagsBloqueConstitucion } from "./db/flags.db";
 import { temaConstitucionI, temaCuerposyfuerzasI, temaTraficoI, temaPenalI } from "./db/htmlteoria.db";
 import { policiaMedioambiental } from "./db/medioAmbienteFragments";
+import { traficoTemaI } from "./db/traficoIFragments";
 import { dibujarTemas, dibujarTeoria, init, volverTemasStatus} from "./dibujar-bloques";
 import { bloques, temasConstitucion, temasCuerposYFuerzasSeguridad, temasTrafico, temasCodigoPenal } from "./temas-list";
 
@@ -103,7 +104,7 @@ const ternarioTemaTrafico = (event,ul ) =>{
     
     
         //pendiente cambiar los clg
-    const tema= (event.target.textContent == temasTrafico[0])? dibujarTeoria(temaTraficoI, 'Tráfico', 'Parte I'):
+    const tema= (event.target.textContent == temasTrafico[0])? dibujarTeoria(traficoTemaI, 'La Ley sobre tráfico', 'circulación de vehículos a motor y seguridad vial'):
                 (event.target.textContent == temasTrafico[1])? dibujarTeoria(temaConstitucionI, 'Constitución', 'Parte II'):
                 (event.target.textContent == temasTrafico[2])? console.log('Constitucion III'):
                 (event.target.textContent == temasTrafico[3])? console.log('Tema: Estatuto Autonomia Principado de Asturias'):
