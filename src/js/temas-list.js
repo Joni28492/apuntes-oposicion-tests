@@ -32,7 +32,7 @@ const temasCuerposYFuerzasSeguridad = [
     'Policía medioambiental'];
 const temasTrafico= [
     'La ley sobre Tráfico',
-    'tema 2',
+    'Las normas de comportamiento en la circulación',
     'tema 3',
     'tema 4',
     'tema 5', 
