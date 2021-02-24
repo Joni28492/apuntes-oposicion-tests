@@ -78,13 +78,13 @@ const art3=`        <div class="alert alert-success ">
 <h5 class="text-center rounded mt-2 pt-2"><strong>Conceptos básicos</strong> Art. 3</h5>
 <hr>
 
-<div class="container border border-success rounded-pill text-center mt-2">
+<div class="container border border-success rounded text-center mt-2">
     <strong class="text">Conductor</strong>
     <p>es el que maneja el mecanismo de conducción de un vehículo o animal, en caso de circulación con
         motivo de aprendizaje, el conductor sera el que este en los mandos adicionales</p>
 </div>
 
-<div class="container border border-success rounded-pill text-center mt-2">
+<div class="container border border-success rounded text-center mt-2">
     <strong class="text">Conductor habitual</strong>
     <p>Persona con el permiso o licencia de conducción necesarios, e inscrito en le registro de Conductores
         e Infractores y previo a su consentimiento, se comunica por el titular del vehículo o por el
@@ -102,7 +102,7 @@ const art3=`        <div class="alert alert-success ">
         del propio empresario</p>
 </div>
 
-<div class="container border border-success rounded-pill text-center mt-2">
+<div class="container border border-success rounded text-center mt-2">
     <strong class="text">Peatón</strong>
     <p>Persona que sin ser conductor transita a pie las vias o terrenos a los que se refiere el ámbito de
         aplicación de la LSV, tambien se consideran peatones aquellos que empujan o arrastran el coche de un
@@ -119,7 +119,7 @@ const art3=`        <div class="alert alert-success ">
         LSV</p>
 </div>
 
-<div class="container border border-info rounded-pill text-center mt-2">
+<div class="container border border-info rounded text-center mt-2">
     <strong class="text">Ciclo</strong>
     <p>Vehículo provisto de 2 ruedas en el que es necesario la aplicación de energia muscular para su
         movimiento, se incluyen también los ciclos de pedaleo asistido</p>
@@ -216,13 +216,13 @@ const art3=`        <div class="alert alert-success ">
 </div>
 
 
-<div class="container border border-secondary rounded-pill text-center mt-2">
+<div class="container border border-secondary rounded text-center mt-2">
     <strong class="text">Camión</strong>
     <p>Vehículo rigido e indivisible, con 4 o mas ruedas concebido para le transporte de mercancias, cuya
         cabina no esta integrada con el resto de la carroceria, max 9 plazas incluido el conductor</p>
 </div>
 
-<div class="container border border-primary rounded-pill text-center mt-2">
+<div class="container border border-primary rounded text-center mt-2">
     <strong class="text">Vehículo mixto adaptable</strong>
     <p>Vehículo dispuesto para el transporte, simultaneo o no de mercancias y personas hasta un máximo de 9
         incluido el conductor, en el que se puede sustituir la carga parcial o totalmente , por personas
@@ -240,7 +240,7 @@ const art3=`        <div class="alert alert-success ">
     <p>Aquel cuya masa no supere los 750Kg, a excepción de los agricolas</p>
 </div>
 
-<div class="container border border-light shadow rounded-pill text-center mt-2">
+<div class="container border border-light shadow rounded text-center mt-2">
     <strong class="text">Semiremolque</strong>
     <p>Vehículo no autopropulsado diseñado y concebido para ser acoplado a un automovil, sobre el que
         reposara parte del mismo, transfiriendole una parte sustancial de su masa</p>
@@ -250,7 +250,7 @@ const art3=`        <div class="alert alert-success ">
     <strong class="text">TractoCamión</strong>
     <p>Automóvil concebido para el arrastre de un semiremolque</p>
 </div>
-<div class="container border border-light shadow rounded-pill text-center mt-2">
+<div class="container border border-light shadow rounded text-center mt-2">
     <strong class="text">Conjunto de vehículos</strong>
     <p> 1 vehículo a motor que tira de otro, ejemplo: tractocamión tira del semiremolque, seria un vehículo
         articulado</p>
