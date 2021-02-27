@@ -79,7 +79,7 @@ const invalidarRespuestaFlag=(btn, texto, claseBootStrap, time=2000 )=>{
 
         setTimeout(() => {
                 btn.classList="m-2 btn btn-info";
-                btn.textContent="Resolver";
+                btn.textContent="Comprobar";
         }, time);
 
 }
@@ -94,6 +94,8 @@ const validarRespuestaFlag = (btn,respuesta, divAlert, parent, element,texto="Co
 
         divAlert.classList="alert bg-success text-light";
         parent.insertBefore(divAlert, btn );
+        
+        btn.nextElementSibling.remove();
 }
 
 
@@ -106,13 +108,15 @@ const capturarEventFlags = (flagListDOM) =>{
 
         flagListDOM.forEach( (element, index) => {
 
+                const btn      = element.children[2],
+                      respuesta=respuestasArr[index], 
+                      parent   = btn.parentNode,
+                      divAlert =document.createElement('div'),
+                      btnSol   = element.children[3];
+
                 element.children[2].addEventListener('click', ()=>{
 
-                        const   input    =element.children[1].value.trim().toLowerCase(),
-                                respuesta=respuestasArr[index],
-                                btn      = element.children[2],
-                                parent   = btn.parentNode,
-                                divAlert =document.createElement('div'),
+                        const   input    =element.children[1].value.trim().toLowerCase(),                                                                                              
                                 bootStrapFijo="m-2 btn btn-";
                         
                         if (!input) { invalidarRespuestaFlag(btn,"Esta vacío",`${bootStrapFijo}warning`);}
@@ -121,7 +125,18 @@ const capturarEventFlags = (flagListDOM) =>{
                                 if (input === respuesta) {validarRespuestaFlag(btn, respuesta,divAlert ,parent, element);}
                                 else{invalidarRespuestaFlag(btn,"Incorrecta",`${bootStrapFijo}danger`);}
                         }
-                });//fin de los input de las flags
+                });//fin de los btn de Resolver
+
+                element.children[3].addEventListener('click', ()=>{
+                      
+                        btn.remove();
+                        parent.removeChild(element.children[1]);
+                        divAlert.textContent=respuesta;
+                        divAlert.classList="alert bg-success text-light border";
+                        parent.insertBefore(divAlert, btnSol );
+                        
+                });//fin btn para obtener la solucion
+
         });//fin de foreach FlagList
 }
 
